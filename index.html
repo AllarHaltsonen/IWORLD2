@@ -18,6 +18,7 @@
   --ink-2:rgba(60,60,67,.62);
   --ink-3:rgba(60,60,67,.36);
   --blue:#0A84FF;
+  --green:#34C759;
   --shadow:0 1px 1px rgba(0,0,0,.03), 0 12px 32px rgba(28,28,30,.07);
   --shadow-float:0 2px 6px rgba(0,0,0,.05), 0 24px 60px rgba(28,28,30,.16);
   --r-lg:26px; --r-md:20px; --r-sm:14px;
@@ -45,15 +46,11 @@
 html,body{height:100%}
 body{
   font-family:-apple-system,BlinkMacSystemFont,"SF Pro Text","SF Pro Display","Helvetica Neue",Inter,sans-serif;
-  background:#0E0E10;
-  display:flex;align-items:center;justify-content:center;
-  color:var(--ink);
+  background:#0E0E10;display:flex;align-items:center;justify-content:center;color:var(--ink);
 }
-/* ---------- device ---------- */
 .device{
   width:393px;height:852px;position:relative;overflow:hidden;
-  background:var(--bg-grad);
-  border-radius:54px;
+  background:var(--bg-grad);border-radius:54px;
   box-shadow:0 0 0 12px #1A1A1C, 0 0 0 14px #3A3A3E, 0 60px 120px rgba(0,0,0,.7);
 }
 @media (max-width:520px), (max-height:900px){
@@ -62,50 +59,37 @@ body{
   .island{display:none}
 }
 .island{position:absolute;top:12px;left:50%;transform:translateX(-50%);
-  width:122px;height:36px;background:#000;border-radius:20px;z-index:190}
-.statusbar{
-  position:absolute;top:0;left:0;right:0;height:56px;z-index:180;
+  width:122px;height:36px;background:#000;border-radius:20px;z-index:290}
+.statusbar{position:absolute;top:0;left:0;right:0;height:56px;z-index:280;
   display:flex;align-items:flex-end;justify-content:space-between;
-  padding:0 30px 6px;font-size:15px;font-weight:600;letter-spacing:-.2px;
-  pointer-events:none;
-}
+  padding:0 30px 6px;font-size:15px;font-weight:600;letter-spacing:-.2px;pointer-events:none}
 .statusbar .right{display:flex;gap:6px;align-items:center}
 .statusbar.invert{color:#fff;text-shadow:0 1px 6px rgba(0,0,0,.3)}
-/* ---------- screens ---------- */
-.screen{
-  position:absolute;inset:0;overflow-y:auto;overflow-x:hidden;
-  padding:72px 20px 150px;
-  opacity:0;pointer-events:none;transform:translateY(10px) scale(.992);
+/* screens */
+.screen{position:absolute;inset:0;overflow-y:auto;overflow-x:hidden;
+  padding:72px 20px 150px;opacity:0;pointer-events:none;transform:translateY(10px) scale(.992);
   transition:opacity .34s cubic-bezier(.3,.8,.3,1), transform .34s cubic-bezier(.3,.8,.3,1);
-  scrollbar-width:none;
-}
+  scrollbar-width:none}
 .screen::-webkit-scrollbar{display:none}
 .screen.active{opacity:1;pointer-events:auto;transform:none}
-@media (prefers-reduced-motion: reduce){
-  *,*::before,*::after{transition:none !important;animation:none !important}
-}
-/* ---------- type ---------- */
+@media (prefers-reduced-motion: reduce){*,*::before,*::after{transition:none !important;animation:none !important}}
+/* type */
 .eyebrow{font-size:13px;font-weight:600;color:var(--ink-2);letter-spacing:.2px}
 h1.large{font-size:34px;font-weight:700;letter-spacing:-.6px;line-height:1.08}
 .subhead{font-size:15px;color:var(--ink-2);margin-top:6px;line-height:1.4}
-.section-label{
-  font-size:13px;font-weight:600;color:var(--ink-2);letter-spacing:.1px;
-  margin:28px 4px 10px;display:flex;justify-content:space-between;align-items:baseline;
-}
+.section-label{font-size:13px;font-weight:600;color:var(--ink-2);letter-spacing:.1px;
+  margin:28px 4px 10px;display:flex;justify-content:space-between;align-items:baseline}
 .section-label span:last-child{color:var(--blue);font-weight:500;cursor:pointer}
-/* ---------- glass card ---------- */
-.card{
-  position:relative;
-  background:var(--surface);
-  backdrop-filter:blur(34px) saturate(180%);
-  -webkit-backdrop-filter:blur(34px) saturate(180%);
-  border:1px solid var(--stroke);
-  border-radius:var(--r-md);
+/* glass card */
+.card{position:relative;background:var(--surface);
+  backdrop-filter:blur(34px) saturate(180%);-webkit-backdrop-filter:blur(34px) saturate(180%);
+  border:1px solid var(--stroke);border-radius:var(--r-md);
   box-shadow:var(--shadow), inset 0 1px 0 var(--stroke-hi);
   padding:16px;margin-bottom:12px;cursor:pointer;
-  transition:transform .25s cubic-bezier(.3,.8,.3,1);
-}
-.card:active{transform:scale(.98)}
+  transition:transform .25s cubic-bezier(.3,.8,.3,1)}
+.card:active{transform:scale(.985)}
+.card.static{cursor:default}
+.card.static:active{transform:none}
 .card .row{display:flex;align-items:center;gap:13px}
 .glyph{width:42px;height:42px;border-radius:13px;flex:none;
   display:flex;align-items:center;justify-content:center;font-size:19px;color:#fff;
@@ -114,7 +98,6 @@ h1.large{font-size:34px;font-weight:700;letter-spacing:-.6px;line-height:1.08}
 .card p{font-size:14px;color:var(--ink-2);margin-top:2px;line-height:1.4}
 .card .meta{font-size:12px;color:var(--ink-3);margin-top:1px}
 .chev{margin-left:auto;color:var(--ink-3);flex:none;font-size:17px}
-/* mini collage inside now cards */
 .collage{display:flex;gap:6px;margin-top:12px}
 .collage .c{flex:1;aspect-ratio:1;border-radius:11px;border:1px solid var(--stroke);position:relative;overflow:hidden}
 .collage .c .more{position:absolute;inset:0;display:flex;align-items:center;justify-content:center;
@@ -122,7 +105,7 @@ h1.large{font-size:34px;font-weight:700;letter-spacing:-.6px;line-height:1.08}
 .presence{display:flex;margin-left:auto}
 .pdot{width:30px;height:30px;border-radius:50%;border:2px solid var(--surface-solid);margin-left:-8px;
   display:flex;align-items:center;justify-content:center;font-size:11px;font-weight:600;color:#fff}
-/* ---------- hero strip ---------- */
+/* hero strip */
 .hero-strip{display:flex;gap:10px;overflow-x:auto;margin:18px -20px 0;padding:4px 20px 8px;scrollbar-width:none}
 .hero-strip::-webkit-scrollbar{display:none}
 .moment{flex:none;width:108px;height:150px;border-radius:18px;position:relative;overflow:hidden;
@@ -132,22 +115,29 @@ h1.large{font-size:34px;font-weight:700;letter-spacing:-.6px;line-height:1.08}
 .moment .ring{position:absolute;top:10px;left:10px;width:26px;height:26px;border-radius:50%;
   border:2px solid rgba(255,255,255,.9);display:flex;align-items:center;justify-content:center;
   font-size:10px;font-weight:700;color:#fff;background:rgba(0,0,0,.18);backdrop-filter:blur(4px)}
-/* photo surface — layered gradients to feel like photography */
 .ph{position:relative;overflow:hidden}
 .ph::after{content:"";position:absolute;inset:0;
   background:radial-gradient(90% 60% at 70% 12%, rgba(255,255,255,.32), transparent 60%),
              linear-gradient(to top, rgba(0,0,0,.26), transparent 45%);
   pointer-events:none}
-/* ---------- MOMENTS ---------- */
+/* header icon buttons */
+.hbtns{display:flex;gap:9px;align-items:center}
+.hbtn{width:42px;height:42px;border-radius:50%;background:var(--surface);border:1px solid var(--stroke);
+  display:flex;align-items:center;justify-content:center;cursor:pointer;color:var(--ink);
+  backdrop-filter:blur(24px);-webkit-backdrop-filter:blur(24px);box-shadow:var(--shadow);position:relative}
+.hbtn svg{width:19px;height:19px}
+.hbtn .badge{position:absolute;top:-2px;right:-2px;min-width:17px;height:17px;border-radius:9px;
+  background:var(--blue);color:#fff;font-size:10px;font-weight:700;display:flex;align-items:center;
+  justify-content:center;padding:0 4px;border:2px solid var(--bg)}
+.hbtn.avb{background:linear-gradient(140deg,#7C8DB0,#4E5D7E);color:#fff;font-weight:600;font-size:16px}
+/* moments */
 .filterbar{display:flex;gap:8px;margin:18px -20px 4px;padding:2px 20px 6px;overflow-x:auto;scrollbar-width:none}
 .filterbar::-webkit-scrollbar{display:none}
 .fchip{flex:none;display:flex;align-items:center;gap:7px;padding:8px 14px 8px 9px;border-radius:100px;
   background:var(--surface);border:1px solid var(--stroke);cursor:pointer;font-size:13px;font-weight:600;color:var(--ink-2);
-  backdrop-filter:blur(24px) saturate(170%);-webkit-backdrop-filter:blur(24px) saturate(170%);
-  transition:all .2s}
+  backdrop-filter:blur(24px) saturate(170%);-webkit-backdrop-filter:blur(24px) saturate(170%);transition:all .2s}
 .fchip .fi{width:22px;height:22px;border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:11px;color:#fff}
 .fchip.on{background:var(--ink);color:var(--bg);border-color:transparent}
-.fchip.on .fi{box-shadow:0 0 0 1.5px rgba(255,255,255,.5)}
 .mhero{height:240px;border-radius:var(--r-lg);position:relative;overflow:hidden;cursor:pointer;
   border:1px solid var(--stroke);box-shadow:var(--shadow-float);margin-bottom:10px}
 .mhero .info{position:absolute;left:0;right:0;bottom:0;padding:36px 18px 16px;
@@ -158,44 +148,59 @@ h1.large{font-size:34px;font-weight:700;letter-spacing:-.6px;line-height:1.08}
 .mitem{aspect-ratio:1;border-radius:16px;position:relative;overflow:hidden;cursor:pointer;
   border:1px solid var(--stroke);transition:transform .2s}
 .mitem:active{transform:scale(.95)}
-.mitem.wide{grid-column:span 2;aspect-ratio:auto}
 .mitem .tag{position:absolute;top:8px;left:8px;width:22px;height:22px;border-radius:50%;
   display:flex;align-items:center;justify-content:center;font-size:10px;color:#fff;
-  background:rgba(0,0,0,.22);backdrop-filter:blur(6px);border:1px solid rgba(255,255,255,.35)}
+  background:rgba(0,0,0,.22);backdrop-filter:blur(6px);border:1px solid rgba(255,255,255,.35);z-index:2}
 .mitem .ml{position:absolute;left:9px;bottom:8px;right:9px;font-size:11px;font-weight:600;color:#fff;
-  text-shadow:0 1px 6px rgba(0,0,0,.5);line-height:1.25}
+  text-shadow:0 1px 6px rgba(0,0,0,.5);line-height:1.25;z-index:2}
 .mitem .play{position:absolute;top:50%;left:50%;transform:translate(-50%,-50%);
   width:34px;height:34px;border-radius:50%;background:rgba(0,0,0,.3);backdrop-filter:blur(8px);
   border:1px solid rgba(255,255,255,.4);display:flex;align-items:center;justify-content:center;
-  color:#fff;font-size:13px;padding-left:3px}
+  color:#fff;font-size:13px;padding-left:3px;z-index:2}
 .mrow{display:flex;gap:8px;overflow-x:auto;margin:0 -20px;padding:2px 20px 6px;scrollbar-width:none}
 .mrow::-webkit-scrollbar{display:none}
 .mrow .mitem{flex:none;width:128px;height:170px;aspect-ratio:auto}
-.mrow .mitem.story{width:108px;height:150px;border-radius:18px}
 .group-head{display:flex;align-items:center;gap:9px;margin:24px 4px 10px}
 .group-head .gi{width:26px;height:26px;border-radius:8px;display:flex;align-items:center;justify-content:center;font-size:13px;color:#fff;
   box-shadow:inset 0 1px 0 rgba(255,255,255,.35)}
 .group-head h3{font-size:16px;font-weight:700;letter-spacing:-.25px}
 .group-head span{font-size:12px;color:var(--ink-3);margin-left:auto;font-weight:500}
-/* ---------- boards ---------- */
-.board-card{
-  border-radius:var(--r-lg);padding:20px;margin-bottom:14px;position:relative;overflow:hidden;
+.group-head span.link{color:var(--blue);cursor:pointer}
+/* follow-feed media card */
+.feedcard{padding:0;overflow:hidden}
+.feedcard .fhead{display:flex;align-items:center;gap:11px;padding:13px 15px 11px}
+.feedcard .fav{width:36px;height:36px;border-radius:50%;flex:none;display:flex;align-items:center;
+  justify-content:center;font-size:13px;font-weight:700;color:#fff;cursor:pointer}
+.feedcard .fhead h4{font-size:14.5px;font-weight:600;cursor:pointer}
+.feedcard .fhead p{font-size:12px;color:var(--ink-2);margin-top:1px;display:flex;align-items:center;gap:5px;flex-wrap:wrap}
+.privchip{font-size:10px;font-weight:600;padding:2.5px 7px;border-radius:100px;
+  background:var(--stroke);color:var(--ink-2);display:inline-flex;align-items:center;gap:3px}
+.feedcard .fmedia{display:flex;gap:3px;height:170px;cursor:pointer}
+.feedcard .fmedia .fm{flex:1;position:relative;overflow:hidden}
+.feedcard .fmedia .fm:first-child{flex:1.6}
+.feedcard .actbar{display:flex;padding:6px 8px;border-top:1px solid var(--stroke)}
+.actbtn{flex:1;display:flex;flex-direction:column;align-items:center;gap:2px;padding:7px 0;
+  border:0;background:transparent;color:var(--ink-2);font-family:inherit;cursor:pointer;border-radius:12px}
+.actbtn:active{background:var(--stroke)}
+.actbtn .ai{font-size:15px}
+.actbtn span{font-size:8.8px;font-weight:600;letter-spacing:0;line-height:1.1;text-align:center}
+/* boards */
+.board-card{border-radius:var(--r-lg);padding:20px;margin-bottom:14px;position:relative;overflow:hidden;
   border:1px solid var(--stroke);box-shadow:var(--shadow), inset 0 1px 0 var(--stroke-hi);cursor:pointer;
   background:var(--surface);backdrop-filter:blur(34px) saturate(180%);
   -webkit-backdrop-filter:blur(34px) saturate(180%);
-  transition:transform .25s cubic-bezier(.3,.8,.3,1);
-}
+  transition:transform .25s cubic-bezier(.3,.8,.3,1)}
 .board-card:active{transform:scale(.98)}
 .board-card .wash{position:absolute;inset:0;opacity:.16;pointer-events:none}
 .board-card h3{font-size:19px;font-weight:700;letter-spacing:-.35px;position:relative}
 .board-card p{font-size:14px;color:var(--ink-2);margin-top:4px;position:relative;line-height:1.45;max-width:86%}
 .board-foot{display:flex;align-items:center;margin-top:16px;position:relative}
 .board-foot .live{margin-left:auto;font-size:12px;font-weight:600;color:var(--ink-2);display:flex;align-items:center;gap:5px}
-.livedot{width:7px;height:7px;border-radius:50%;background:#34C759;box-shadow:0 0 0 3px rgba(52,199,89,.18)}
-/* ---------- detail ---------- */
+.livedot{width:7px;height:7px;border-radius:50%;background:var(--green);box-shadow:0 0 0 3px rgba(52,199,89,.18)}
+/* detail */
 .back{display:inline-flex;align-items:center;gap:4px;font-size:16px;color:var(--blue);
   font-weight:500;cursor:pointer;margin-bottom:14px}
-.pill-row{display:flex;gap:8px;margin-top:16px;overflow-x:auto;scrollbar-width:none;margin-left:-20px;margin-right:-20px;padding:0 20px}
+.pill-row{display:flex;gap:8px;margin-top:16px;overflow-x:auto;scrollbar-width:none;margin-left:-20px;margin-right:-20px;padding:0 20px 2px}
 .pill-row::-webkit-scrollbar{display:none}
 .pill{flex:none;padding:8px 14px;border-radius:100px;font-size:13px;font-weight:600;
   background:var(--surface);border:1px solid var(--stroke);color:var(--ink-2);cursor:pointer;
@@ -205,7 +210,7 @@ h1.large{font-size:34px;font-weight:700;letter-spacing:-.6px;line-height:1.08}
 .task:last-child{border-bottom:0}
 .task .tick{width:24px;height:24px;border-radius:50%;border:1.8px solid var(--ink-3);flex:none;cursor:pointer;
   display:flex;align-items:center;justify-content:center;color:#fff;font-size:12px;transition:all .2s}
-.task.done .tick{background:#34C759;border-color:#34C759}
+.task.done .tick{background:var(--green);border-color:var(--green)}
 .task.done .t-name{text-decoration:line-through;color:var(--ink-3)}
 .task .t-name{font-size:15px;font-weight:500;flex:1}
 .task .t-due{font-size:12px;color:var(--ink-3)}
@@ -214,13 +219,10 @@ h1.large{font-size:34px;font-weight:700;letter-spacing:-.6px;line-height:1.08}
 .ficon{width:36px;height:36px;border-radius:10px;background:var(--stroke);display:flex;align-items:center;justify-content:center;font-size:16px;flex:none}
 .filerow .fname{font-size:15px;font-weight:500}
 .filerow .fmeta{font-size:12px;color:var(--ink-3)}
-.ai-strip{
-  border-radius:var(--r-md);padding:15px 16px;margin-bottom:12px;cursor:pointer;
-  border:1px solid var(--stroke);position:relative;overflow:hidden;
-  background:var(--surface);
+.ai-strip{border-radius:var(--r-md);padding:15px 16px;margin-bottom:12px;cursor:pointer;
+  border:1px solid var(--stroke);position:relative;overflow:hidden;background:var(--surface);
   backdrop-filter:blur(34px) saturate(180%);-webkit-backdrop-filter:blur(34px) saturate(180%);
-  box-shadow:var(--shadow);
-}
+  box-shadow:var(--shadow)}
 .ai-strip::before{content:"";position:absolute;inset:-1px;border-radius:inherit;padding:1px;
   background:linear-gradient(120deg,#FF9F6E,#C77DDE,#5AB0FF,#6EE7C7);
   -webkit-mask:linear-gradient(#000 0 0) content-box, linear-gradient(#000 0 0);
@@ -230,7 +232,27 @@ h1.large{font-size:34px;font-weight:700;letter-spacing:-.6px;line-height:1.08}
   -webkit-background-clip:text;background-clip:text;color:transparent;margin-bottom:5px}
 .ai-strip h4{font-size:15px;font-weight:600;letter-spacing:-.2px;line-height:1.35}
 .ai-strip p{font-size:13px;color:var(--ink-2);margin-top:3px;line-height:1.4}
-/* ---------- people ---------- */
+/* board chat */
+.bchat-msg{display:flex;gap:9px;margin-bottom:12px;align-items:flex-end}
+.bchat-msg .bav{width:28px;height:28px;border-radius:50%;flex:none;display:flex;align-items:center;
+  justify-content:center;font-size:10px;font-weight:700;color:#fff}
+.bchat-msg .bb{background:var(--surface);border:1px solid var(--stroke);border-radius:4px 16px 16px 16px;
+  padding:10px 13px;font-size:14px;line-height:1.4;max-width:78%}
+.bchat-msg .bb .who{font-size:11px;font-weight:700;color:var(--ink-2);margin-bottom:2px}
+.bchat-msg.me{flex-direction:row-reverse}
+.bchat-msg.me .bb{background:var(--blue);color:#fff;border:0;border-radius:16px 4px 16px 16px}
+.pinned{display:flex;gap:10px;align-items:center;background:rgba(255,200,80,.1);
+  border:1px solid rgba(255,180,60,.3);border-radius:14px;padding:11px 13px;margin-bottom:14px;font-size:13px}
+.pinned .pi{font-size:15px}
+.pinned b{font-weight:600}
+/* people */
+.searchwrap{display:flex;gap:9px;margin-top:18px;align-items:center}
+.search{flex:1;display:flex;align-items:center;gap:8px;padding:11px 14px;border-radius:14px;
+  background:var(--surface);border:1px solid var(--stroke);
+  backdrop-filter:blur(24px);-webkit-backdrop-filter:blur(24px)}
+.search svg{width:16px;height:16px;color:var(--ink-3);flex:none}
+.search input{flex:1;border:0;background:transparent;font-family:inherit;font-size:15px;color:var(--ink);outline:none}
+.search input::placeholder{color:var(--ink-3)}
 .circle-row{display:flex;align-items:center;gap:14px;padding:14px 2px;border-bottom:1px solid var(--stroke);cursor:pointer}
 .circle-row:last-child{border-bottom:0}
 .circle-glyph{width:46px;height:46px;border-radius:50%;flex:none;display:flex;align-items:center;justify-content:center;font-size:20px;color:#fff;
@@ -238,14 +260,99 @@ h1.large{font-size:34px;font-weight:700;letter-spacing:-.6px;line-height:1.08}
 .circle-row h3{font-size:16px;font-weight:600}
 .circle-row p{font-size:13px;color:var(--ink-2);margin-top:1px}
 .world-btn{margin-left:auto;flex:none;font-size:12px;font-weight:600;color:var(--blue);
-  padding:7px 12px;border-radius:100px;background:rgba(10,132,255,.1);white-space:nowrap}
+  padding:7px 12px;border-radius:100px;background:rgba(10,132,255,.1);white-space:nowrap;cursor:pointer;border:0;font-family:inherit}
 .av{width:30px;height:30px;border-radius:50%;display:inline-flex;align-items:center;justify-content:center;
   font-size:11px;font-weight:600;color:#fff;border:2px solid var(--surface-solid)}
-/* ---------- profile ---------- */
+/* active now */
+.activerow{display:flex;gap:14px;overflow-x:auto;margin:0 -20px;padding:6px 20px 8px;scrollbar-width:none}
+.activerow::-webkit-scrollbar{display:none}
+.activep{flex:none;width:66px;text-align:center;cursor:pointer}
+.activep .aav{width:56px;height:56px;border-radius:50%;margin:0 auto;display:flex;align-items:center;
+  justify-content:center;font-size:19px;font-weight:700;color:#fff;position:relative;box-shadow:var(--shadow)}
+.activep .aav .st{position:absolute;bottom:-1px;right:-1px;width:16px;height:16px;border-radius:50%;
+  border:2.5px solid var(--bg);background:var(--green)}
+.activep .aav .st.away{background:#FF9F0A}.activep .aav .st.focus{background:#BF5AF2}
+.activep .aav .st.off{background:#8E8E93}
+.activep h5{font-size:11.5px;font-weight:600;margin-top:6px}
+.activep p{font-size:10px;color:var(--ink-3);margin-top:1px}
+/* person rows */
+.prow{display:flex;align-items:center;gap:12px;padding:12px 0;border-bottom:1px solid var(--stroke)}
+.prow:last-child{border-bottom:0}
+.prow .pav{width:44px;height:44px;border-radius:50%;flex:none;display:flex;align-items:center;
+  justify-content:center;font-size:15px;font-weight:700;color:#fff;cursor:pointer}
+.prow h4{font-size:15px;font-weight:600;cursor:pointer}
+.prow p{font-size:12.5px;color:var(--ink-2);margin-top:1px}
+.prow .thumbs{display:flex;gap:4px;margin-top:6px}
+.prow .thumbs .th{width:34px;height:34px;border-radius:9px;border:1px solid var(--stroke);overflow:hidden;position:relative;cursor:pointer}
+.prow .pacts{margin-left:auto;display:flex;gap:7px;flex:none}
+.iconbtn{width:34px;height:34px;border-radius:50%;border:1px solid var(--stroke);background:var(--surface);
+  display:flex;align-items:center;justify-content:center;cursor:pointer;color:var(--ink);font-size:14px}
+/* discover */
+.dchips{display:flex;gap:7px;margin:4px -20px 12px;padding:2px 20px 4px;overflow-x:auto;scrollbar-width:none}
+.dchips::-webkit-scrollbar{display:none}
+.dchip{flex:none;padding:7px 13px;border-radius:100px;font-size:12.5px;font-weight:600;cursor:pointer;
+  background:var(--surface);border:1px solid var(--stroke);color:var(--ink-2)}
+.dchip.on{background:var(--ink);color:var(--bg);border-color:transparent}
+.dcard{padding:15px;margin-bottom:10px;cursor:default}
+.dcard:active{transform:none}
+.dcard .dtop{display:flex;gap:12px;align-items:flex-start}
+.dcard .dav{width:50px;height:50px;border-radius:50%;flex:none;display:flex;align-items:center;
+  justify-content:center;font-size:18px;font-weight:700;color:#fff;cursor:pointer}
+.dcard h4{font-size:16px;font-weight:700;letter-spacing:-.2px;cursor:pointer}
+.dcard .idline{font-size:13px;color:var(--ink-2);margin-top:1px}
+.dcard .why{display:flex;align-items:flex-start;gap:7px;margin-top:10px;padding:9px 11px;border-radius:12px;
+  background:var(--stroke);font-size:12.5px;color:var(--ink-2);line-height:1.4}
+.dcard .why .wi{flex:none;font-size:12px;margin-top:1px}
+.dcard .why .qm{margin-left:auto;flex:none;color:var(--blue);font-weight:600;cursor:pointer;font-size:11.5px;white-space:nowrap}
+.dcard .dmedia{display:flex;gap:5px;margin-top:10px}
+.dcard .dmedia .dm{flex:1;height:64px;border-radius:11px;border:1px solid var(--stroke);overflow:hidden;position:relative;cursor:pointer}
+.dcard .dbtns{display:flex;gap:7px;margin-top:12px}
+.btn{flex:1;border:0;border-radius:12px;padding:10px 0;font-family:inherit;font-size:13px;font-weight:600;cursor:pointer;
+  transition:transform .15s}
+.btn:active{transform:scale(.96)}
+.btn.primary{background:var(--ink);color:var(--bg)}
+.btn.soft{background:var(--stroke);color:var(--ink)}
+.btn.blue{background:rgba(10,132,255,.12);color:var(--blue)}
+.btn.done{background:rgba(52,199,89,.14);color:var(--green)}
+/* their world */
+#world .world-head{display:flex;align-items:center;gap:14px;margin-bottom:4px}
+#world .wav{width:68px;height:68px;border-radius:50%;display:flex;align-items:center;justify-content:center;
+  font-size:26px;font-weight:600;color:#fff;box-shadow:var(--shadow-float);position:relative;flex:none}
+#world .wav .st{position:absolute;bottom:1px;right:1px;width:17px;height:17px;border-radius:50%;
+  border:3px solid var(--bg);background:var(--green)}
+.wmeta{display:flex;gap:6px;flex-wrap:wrap;margin-top:14px}
+.wtag{font-size:11.5px;font-weight:600;padding:6px 11px;border-radius:100px;background:var(--surface);
+  border:1px solid var(--stroke);color:var(--ink-2);display:inline-flex;align-items:center;gap:5px}
+.wtag .ti{width:16px;height:16px;border-radius:5px;display:inline-flex;align-items:center;justify-content:center;font-size:8px;color:#fff}
+.wacts{display:flex;gap:7px;margin-top:16px}
+.wact{flex:1;display:flex;flex-direction:column;align-items:center;gap:5px;padding:11px 0;border-radius:15px;
+  background:var(--surface);border:1px solid var(--stroke);cursor:pointer;color:var(--ink);
+  backdrop-filter:blur(24px);-webkit-backdrop-filter:blur(24px);font-family:inherit;
+  transition:transform .15s}
+.wact:active{transform:scale(.95)}
+.wact .wi{font-size:17px}
+.wact span{font-size:10px;font-weight:600;color:var(--ink-2)}
+.wact.main{background:var(--ink);border-color:transparent}
+.wact.main .wi,.wact.main span{color:var(--bg)}
+.ftabs{display:flex;gap:7px;margin:18px -20px 4px;padding:0 20px 4px;overflow-x:auto;scrollbar-width:none}
+.ftabs::-webkit-scrollbar{display:none}
+.perm-note{display:flex;align-items:center;gap:8px;font-size:12.5px;color:var(--ink-2);
+  background:var(--surface);border:1px solid var(--stroke);border-radius:14px;padding:11px 14px;margin:14px 0 6px;
+  backdrop-filter:blur(24px);-webkit-backdrop-filter:blur(24px)}
+.locked{border-radius:var(--r-lg);padding:28px 20px;text-align:center;margin:14px 0;
+  background:var(--surface);border:1px solid var(--stroke);position:relative;overflow:hidden;
+  backdrop-filter:blur(34px) saturate(180%);-webkit-backdrop-filter:blur(34px) saturate(180%);
+  box-shadow:var(--shadow), inset 0 1px 0 var(--stroke-hi)}
+.locked .lk{width:48px;height:48px;border-radius:50%;margin:0 auto 12px;background:var(--stroke);
+  display:flex;align-items:center;justify-content:center}
+.locked h4{font-size:15.5px;font-weight:700;letter-spacing:-.2px}
+.locked p{font-size:13px;color:var(--ink-2);margin-top:4px;line-height:1.4}
+.locked button{margin-top:14px;border:0;border-radius:100px;padding:10px 20px;font-family:inherit;
+  font-size:13px;font-weight:600;background:var(--ink);color:var(--bg);cursor:pointer}
+/* profile */
 .profile-hero{display:flex;flex-direction:column;align-items:center;text-align:center;padding-top:10px}
 .big-av{width:96px;height:96px;border-radius:50%;display:flex;align-items:center;justify-content:center;
-  font-size:34px;font-weight:600;color:#fff;
-  background:linear-gradient(140deg,#7C8DB0,#4E5D7E);box-shadow:var(--shadow-float)}
+  font-size:34px;font-weight:600;color:#fff;background:linear-gradient(140deg,#7C8DB0,#4E5D7E);box-shadow:var(--shadow-float)}
 .profile-hero h1{font-size:26px;font-weight:700;letter-spacing:-.4px;margin-top:14px}
 .profile-hero .sub{font-size:14px;color:var(--ink-2);margin-top:3px}
 .seg{display:flex;background:var(--stroke);border-radius:12px;padding:3px;margin:22px 0 6px;gap:2px}
@@ -256,15 +363,74 @@ h1.large{font-size:34px;font-weight:700;letter-spacing:-.6px;line-height:1.08}
 .photo-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:8px;margin-bottom:12px}
 .photo{aspect-ratio:1;border-radius:14px;border:1px solid var(--stroke);position:relative;overflow:hidden}
 .photo .pl{position:absolute;left:8px;bottom:7px;font-size:10px;font-weight:600;color:#fff;text-shadow:0 1px 6px rgba(0,0,0,.45)}
-/* ---------- tab bar ---------- */
-.tabbar{
-  position:absolute;left:50%;transform:translateX(-50%);bottom:22px;z-index:70;
+/* inbox */
+.inbrow{display:flex;align-items:flex-start;gap:12px;padding:13px 2px;border-bottom:1px solid var(--stroke);cursor:pointer}
+.inbrow:last-child{border-bottom:0}
+.inbrow .iav{width:42px;height:42px;border-radius:50%;flex:none;display:flex;align-items:center;
+  justify-content:center;font-size:15px;font-weight:700;color:#fff}
+.inbrow h4{font-size:14.5px;font-weight:600;line-height:1.3}
+.inbrow p{font-size:13px;color:var(--ink-2);margin-top:2px;line-height:1.35}
+.inbrow .when{margin-left:auto;flex:none;font-size:11px;color:var(--ink-3);font-weight:500}
+.inbrow .dot{width:8px;height:8px;border-radius:50%;background:var(--blue);flex:none;margin-top:7px}
+.inbtns{display:flex;gap:7px;margin-top:9px}
+.inbtns .btn{flex:none;padding:8px 16px;font-size:12px}
+/* chat */
+#chat{padding:0;display:flex;flex-direction:column}
+.chat-head{flex:none;padding:64px 16px 12px;display:flex;align-items:center;gap:11px;
+  background:var(--glass);backdrop-filter:blur(44px) saturate(190%);
+  -webkit-backdrop-filter:blur(44px) saturate(190%);
+  border-bottom:1px solid var(--stroke);position:relative;z-index:5}
+.chat-head .cback{font-size:22px;color:var(--blue);cursor:pointer;padding:4px 6px;font-weight:400}
+.chat-head .cav{width:40px;height:40px;border-radius:50%;display:flex;align-items:center;justify-content:center;
+  font-size:14px;font-weight:700;color:#fff;cursor:pointer;flex:none}
+.chat-head h3{font-size:16px;font-weight:700;letter-spacing:-.2px}
+.chat-head .ctx{font-size:11.5px;color:var(--ink-2);margin-top:1px;display:flex;gap:5px;align-items:center;flex-wrap:wrap}
+.chat-head .ft{margin-left:auto;display:flex;gap:8px}
+.chat-ctxchips{display:flex;gap:7px;padding:10px 16px 4px;overflow-x:auto;scrollbar-width:none;flex:none}
+.chat-ctxchips::-webkit-scrollbar{display:none}
+.chat-body{flex:1;overflow-y:auto;padding:12px 16px 16px;scrollbar-width:none}
+.chat-body::-webkit-scrollbar{display:none}
+.bub{max-width:76%;padding:11px 14px;border-radius:19px;font-size:15px;line-height:1.4;margin-bottom:8px;
+  position:relative;clear:both;word-wrap:break-word}
+.bub.them{float:left;background:var(--surface);border:1px solid var(--stroke);border-bottom-left-radius:6px;
+  backdrop-filter:blur(24px);-webkit-backdrop-filter:blur(24px)}
+.bub.me{float:right;background:var(--blue);color:#fff;border-bottom-right-radius:6px}
+.bub.aib{float:left;background:var(--surface);border:1px solid var(--stroke);border-bottom-left-radius:6px;max-width:84%}
+.bub.aib .ailabel{font-size:10.5px;font-weight:700;letter-spacing:.5px;margin-bottom:4px;
+  background:linear-gradient(90deg,#E8702A,#A855F7,#0A84FF);-webkit-background-clip:text;background-clip:text;color:transparent}
+.bub .bmedia{width:190px;height:130px;border-radius:13px;margin:-3px -6px 7px;border:1px solid var(--stroke);position:relative;overflow:hidden}
+.chat-day{clear:both;text-align:center;font-size:11px;color:var(--ink-3);font-weight:600;padding:10px 0 12px}
+.delivered{clear:both;float:right;font-size:10.5px;color:var(--ink-3);font-weight:500;margin:-3px 4px 8px}
+.replyctx{clear:both;display:flex;align-items:center;gap:9px;background:var(--surface);
+  border:1px solid var(--stroke);border-radius:14px;padding:8px 11px;margin-bottom:10px;font-size:12.5px;
+  color:var(--ink-2);backdrop-filter:blur(24px)}
+.replyctx .rth{width:34px;height:46px;border-radius:8px;flex:none;border:1px solid var(--stroke);overflow:hidden;position:relative}
+.chat-input{flex:none;padding:10px 14px calc(20px + env(safe-area-inset-bottom));
+  background:var(--glass);backdrop-filter:blur(44px) saturate(190%);
+  -webkit-backdrop-filter:blur(44px) saturate(190%);
+  border-top:1px solid var(--stroke);display:flex;align-items:center;gap:8px;position:relative;z-index:5}
+.cinp{flex:1;display:flex;align-items:center;gap:6px;background:var(--surface);border:1px solid var(--stroke);
+  border-radius:100px;padding:6px 7px 6px 15px}
+.cinp input{flex:1;border:0;background:transparent;font-family:inherit;font-size:15px;color:var(--ink);outline:none;min-width:0}
+.cinp input::placeholder{color:var(--ink-3)}
+.cibtn{width:32px;height:32px;border-radius:50%;border:0;background:transparent;cursor:pointer;
+  display:flex;align-items:center;justify-content:center;font-size:16px;color:var(--ink-2);flex:none}
+.cibtn.orb{background:conic-gradient(from 200deg,#FF9F6E,#C77DDE,#5AB0FF,#6EE7C7,#FF9F6E);
+  width:28px;height:28px;box-shadow:0 2px 10px rgba(168,85,247,.35)}
+.cibtn.send{background:var(--blue);color:#fff;font-size:13px}
+.chat-empty{clear:both;text-align:center;padding:46px 30px;color:var(--ink-2)}
+.chat-empty .ce{width:62px;height:62px;border-radius:50%;margin:0 auto 14px;background:var(--surface);
+  border:1px solid var(--stroke);display:flex;align-items:center;justify-content:center;font-size:25px}
+.chat-empty h4{font-size:16px;font-weight:700;color:var(--ink)}
+.chat-empty p{font-size:13.5px;margin-top:5px;line-height:1.45}
+/* tab bar */
+.tabbar{position:absolute;left:50%;transform:translateX(-50%);bottom:22px;z-index:70;
   display:flex;align-items:center;gap:2px;padding:7px;
   background:var(--glass);backdrop-filter:blur(44px) saturate(200%);
   -webkit-backdrop-filter:blur(44px) saturate(200%);
   border:1px solid var(--stroke);border-radius:100px;
   box-shadow:var(--shadow-float), inset 0 1px 0 var(--stroke-hi);
-}
+  transition:transform .35s cubic-bezier(.3,.8,.3,1), opacity .3s}
 .tab{display:flex;flex-direction:column;align-items:center;gap:2px;
   width:60px;padding:8px 0;border-radius:100px;cursor:pointer;border:0;background:transparent;
   font-family:inherit;color:var(--ink-3);transition:all .25s cubic-bezier(.3,.8,.3,1)}
@@ -272,25 +438,24 @@ h1.large{font-size:34px;font-weight:700;letter-spacing:-.6px;line-height:1.08}
 .tab span{font-size:10px;font-weight:600}
 .tab.on{color:var(--ink);background:var(--surface-solid);box-shadow:0 2px 10px rgba(0,0,0,.08)}
 .tab.create{color:#fff;background:var(--ink);width:50px;padding:12px 0}
-/* ---------- sheets ---------- */
+.tabbar.hidden{transform:translateX(-50%) translateY(120px);opacity:0;pointer-events:none}
+/* sheets */
 .scrim{position:absolute;inset:0;background:rgba(0,0,0,.32);z-index:95;
   opacity:0;pointer-events:none;transition:opacity .3s}
 .scrim.open{opacity:1;pointer-events:auto}
-.sheet{
-  position:absolute;left:0;right:0;bottom:0;z-index:96;
+.sheet{position:absolute;left:0;right:0;bottom:0;z-index:96;
   background:var(--glass);backdrop-filter:blur(50px) saturate(200%);
   -webkit-backdrop-filter:blur(50px) saturate(200%);
   border-radius:32px 32px 0 0;border:1px solid var(--stroke);border-bottom:0;
   box-shadow:0 -20px 60px rgba(0,0,0,.18), inset 0 1px 0 var(--stroke-hi);
   padding:14px 22px calc(28px + env(safe-area-inset-bottom));
   transform:translateY(105%);transition:transform .42s cubic-bezier(.32,.9,.3,1);
-  max-height:78%;overflow-y:auto;scrollbar-width:none;
-}
+  max-height:80%;overflow-y:auto;scrollbar-width:none}
 .sheet::-webkit-scrollbar{display:none}
 .sheet.open{transform:none}
 .grab{width:38px;height:5px;border-radius:3px;background:var(--ink-3);opacity:.5;margin:0 auto 18px}
 .sheet h2{font-size:21px;font-weight:700;letter-spacing:-.35px}
-.sheet .s-sub{font-size:14px;color:var(--ink-2);margin-top:4px;line-height:1.4}
+.sheet .s-sub{font-size:14px;color:var(--ink-2);margin-top:4px;line-height:1.45}
 .create-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:10px;margin-top:20px}
 .create-item{border-radius:18px;padding:16px 8px 13px;text-align:center;cursor:pointer;
   background:var(--surface);border:1px solid var(--stroke);transition:transform .2s}
@@ -324,35 +489,37 @@ h1.large{font-size:34px;font-weight:700;letter-spacing:-.6px;line-height:1.08}
 .ai-sug{display:flex;flex-direction:column;gap:8px;margin-top:16px}
 .ai-sug button{text-align:left;border:1px solid var(--stroke);background:var(--surface);border-radius:14px;
   padding:13px 15px;font-family:inherit;font-size:14px;font-weight:500;color:var(--ink);cursor:pointer}
-/* ---------- toast ---------- */
-.toast{position:absolute;top:68px;left:50%;transform:translate(-50%,-24px);z-index:300;
+.note-input{width:100%;margin-top:14px;border:1px solid var(--stroke);background:var(--surface);
+  border-radius:14px;padding:13px 15px;font-family:inherit;font-size:14.5px;color:var(--ink);outline:none}
+.sheet .sl{font-size:12.5px;font-weight:600;color:var(--ink-2);margin:18px 2px 8px}
+.actsheet-btn{width:100%;text-align:left;border:1px solid var(--stroke);background:var(--surface);
+  border-radius:14px;padding:14px 16px;font-family:inherit;font-size:15px;font-weight:500;color:var(--ink);
+  cursor:pointer;margin-bottom:7px;display:flex;align-items:center;gap:11px}
+.actsheet-btn .ai{font-size:17px;width:24px;text-align:center}
+.actsheet-btn.danger{color:#FF453A}
+/* toast */
+.toast{position:absolute;top:68px;left:50%;transform:translate(-50%,-24px);z-index:400;
   background:var(--glass);backdrop-filter:blur(36px) saturate(190%);
   -webkit-backdrop-filter:blur(36px) saturate(190%);
   border:1px solid var(--stroke);border-radius:100px;box-shadow:var(--shadow-float);
   padding:11px 20px;font-size:14px;font-weight:600;display:flex;align-items:center;gap:8px;
-  opacity:0;pointer-events:none;transition:all .4s cubic-bezier(.3,.9,.3,1);white-space:nowrap}
+  opacity:0;pointer-events:none;transition:all .4s cubic-bezier(.3,.9,.3,1);white-space:nowrap;max-width:88%}
 .toast.show{opacity:1;transform:translate(-50%,0)}
-.toast .ok{width:20px;height:20px;border-radius:50%;background:#34C759;color:#fff;font-size:11px;
-  display:flex;align-items:center;justify-content:center}
-/* ================= STORY VIEWER ================= */
-.storyview{
-  position:absolute;inset:0;z-index:200;display:flex;flex-direction:column;
-  opacity:0;pointer-events:none;transition:opacity .35s;
-  background:#000;overflow:hidden;
-}
+.toast .ok{width:20px;height:20px;border-radius:50%;background:var(--green);color:#fff;font-size:11px;
+  display:flex;align-items:center;justify-content:center;flex:none}
+.toast span:last-child{overflow:hidden;text-overflow:ellipsis}
+/* story viewer */
+.storyview{position:absolute;inset:0;z-index:200;display:flex;flex-direction:column;
+  opacity:0;pointer-events:none;transition:opacity .35s;background:#000;overflow:hidden}
 .storyview.open{opacity:1;pointer-events:auto}
 .sv-bg{position:absolute;inset:-40px;filter:blur(50px) saturate(150%) brightness(.7);transform:scale(1.15);
   transition:background .5s}
-.sv-frame{
-  position:absolute;inset:0;display:flex;align-items:center;justify-content:center;
-  padding:88px 16px 130px;
-}
-.sv-media{
-  width:100%;height:100%;border-radius:30px;position:relative;overflow:hidden;
+.sv-frame{position:absolute;inset:0;display:flex;align-items:center;justify-content:center;
+  padding:88px 16px 132px}
+.sv-media{width:100%;height:100%;border-radius:30px;position:relative;overflow:hidden;
   border:1px solid rgba(255,255,255,.18);
   box-shadow:0 30px 80px rgba(0,0,0,.55), inset 0 1px 0 rgba(255,255,255,.25);
-  transition:transform .45s cubic-bezier(.3,.85,.3,1), opacity .3s;
-}
+  transition:transform .45s cubic-bezier(.3,.85,.3,1), opacity .3s}
 .sv-media.slide-up{transform:translateY(-26px);opacity:0}
 .sv-media.slide-down{transform:translateY(26px);opacity:0}
 .sv-caption{position:absolute;left:18px;right:18px;bottom:20px;color:#fff;z-index:2}
@@ -367,70 +534,59 @@ h1.large{font-size:34px;font-weight:700;letter-spacing:-.6px;line-height:1.08}
 @keyframes fill{from{width:0}to{width:100%}}
 .sv-id{display:flex;align-items:center;gap:11px}
 .sv-id .sav{width:38px;height:38px;border-radius:50%;display:flex;align-items:center;justify-content:center;
-  font-size:14px;font-weight:700;color:#fff;border:1.5px solid rgba(255,255,255,.6)}
-.sv-id h4{font-size:15px;font-weight:600;text-shadow:0 1px 8px rgba(0,0,0,.4)}
-.sv-id p{font-size:12px;opacity:.8;display:flex;align-items:center;gap:5px}
+  font-size:14px;font-weight:700;color:#fff;border:1.5px solid rgba(255,255,255,.6);cursor:pointer;flex:none}
+.sv-id h4{font-size:15px;font-weight:600;text-shadow:0 1px 8px rgba(0,0,0,.4);cursor:pointer}
+.sv-id .pline{font-size:12px;opacity:.85;display:flex;align-items:center;gap:5px;flex-wrap:wrap}
 .sv-id .bicon{width:15px;height:15px;border-radius:4px;display:inline-flex;align-items:center;justify-content:center;font-size:8px}
-.sv-close{margin-left:auto;width:34px;height:34px;border-radius:50%;border:0;cursor:pointer;
+.sv-id .pchip{font-size:9.5px;font-weight:700;padding:2px 7px;border-radius:100px;
+  background:rgba(255,255,255,.18);backdrop-filter:blur(6px);border:1px solid rgba(255,255,255,.25)}
+.sv-close{margin-left:auto;width:34px;height:34px;border-radius:50%;cursor:pointer;
   background:rgba(0,0,0,.3);backdrop-filter:blur(10px);color:#fff;font-size:15px;
   display:flex;align-items:center;justify-content:center;border:1px solid rgba(255,255,255,.25)}
-.sv-actions{
-  position:absolute;left:50%;transform:translateX(-50%);bottom:26px;z-index:5;
-  display:flex;gap:6px;padding:8px;
+.sv-actions{position:absolute;left:50%;transform:translateX(-50%);bottom:26px;z-index:5;
+  display:flex;gap:2px;padding:7px;
   background:rgba(20,20,24,.42);backdrop-filter:blur(40px) saturate(190%);
   -webkit-backdrop-filter:blur(40px) saturate(190%);
   border:1px solid rgba(255,255,255,.16);border-radius:100px;
-  box-shadow:0 16px 50px rgba(0,0,0,.45), inset 0 1px 0 rgba(255,255,255,.2);
-}
-.sv-act{display:flex;flex-direction:column;align-items:center;gap:3px;width:70px;padding:8px 0;
+  box-shadow:0 16px 50px rgba(0,0,0,.45), inset 0 1px 0 rgba(255,255,255,.2)}
+.sv-act{display:flex;flex-direction:column;align-items:center;gap:3px;width:57px;padding:8px 0;
   border:0;background:transparent;color:#fff;font-family:inherit;cursor:pointer;border-radius:100px;
   transition:background .2s}
 .sv-act:active{background:rgba(255,255,255,.12)}
-.sv-act .si{font-size:18px}
-.sv-act span{font-size:9.5px;font-weight:600;opacity:.85;line-height:1.15;text-align:center}
+.sv-act .si{font-size:17px}
+.sv-act span{font-size:8.6px;font-weight:600;opacity:.85;line-height:1.15;text-align:center}
 .sv-hint{position:absolute;right:14px;top:50%;transform:translateY(-50%);z-index:4;color:rgba(255,255,255,.55);
   display:flex;flex-direction:column;align-items:center;gap:6px;font-size:10px;font-weight:600;letter-spacing:.4px}
 .sv-hint .arr{font-size:14px;animation:nudge 2.4s ease-in-out infinite}
 @keyframes nudge{0%,100%{transform:translateY(0)}50%{transform:translateY(-5px)}}
-/* ================= MEDIA VIEWER ================= */
-.mediaview{
-  position:absolute;inset:0;z-index:200;
-  opacity:0;pointer-events:none;transition:opacity .3s;background:rgba(0,0,0,.4);
-  display:flex;flex-direction:column;
-}
+/* media viewer */
+.mediaview{position:absolute;inset:0;z-index:200;opacity:0;pointer-events:none;transition:opacity .3s;
+  background:rgba(0,0,0,.4);display:flex;flex-direction:column}
 .mediaview.open{opacity:1;pointer-events:auto}
 .mv-bg{position:absolute;inset:-40px;filter:blur(60px) brightness(.55) saturate(150%);transform:scale(1.15)}
-.mv-stage{flex:1;display:flex;align-items:center;justify-content:center;padding:96px 20px 20px;position:relative;z-index:2}
+.mv-stage{flex:1;display:flex;align-items:center;justify-content:center;padding:96px 20px 16px;position:relative;z-index:2}
 .mv-img{width:100%;aspect-ratio:4/5;border-radius:26px;position:relative;overflow:hidden;
   border:1px solid rgba(255,255,255,.2);box-shadow:0 30px 80px rgba(0,0,0,.5)}
-.mv-panel{
-  position:relative;z-index:3;margin:0 14px calc(18px + env(safe-area-inset-bottom));
+.mv-panel{position:relative;z-index:3;margin:0 14px calc(18px + env(safe-area-inset-bottom));
   background:rgba(24,24,28,.5);backdrop-filter:blur(44px) saturate(190%);
   -webkit-backdrop-filter:blur(44px) saturate(190%);
   border:1px solid rgba(255,255,255,.14);border-radius:26px;
-  box-shadow:inset 0 1px 0 rgba(255,255,255,.18);
-  padding:16px 18px;color:#fff;
-}
+  box-shadow:inset 0 1px 0 rgba(255,255,255,.18);padding:15px 17px;color:#fff}
 .mv-panel h3{font-size:17px;font-weight:700;letter-spacing:-.25px}
-.mv-panel .ctx{display:flex;align-items:center;gap:7px;font-size:12.5px;opacity:.8;margin-top:4px;font-weight:500}
+.mv-panel .ctx{display:flex;align-items:center;gap:7px;font-size:12.5px;opacity:.8;margin-top:4px;font-weight:500;flex-wrap:wrap}
 .mv-panel .ctx .bicon{width:16px;height:16px;border-radius:5px;display:inline-flex;align-items:center;justify-content:center;font-size:9px}
-.mv-acts{display:flex;gap:6px;margin-top:14px}
+.mv-panel .ctx .pchip{font-size:9.5px;font-weight:700;padding:2px 7px;border-radius:100px;
+  background:rgba(255,255,255,.14);border:1px solid rgba(255,255,255,.2)}
+.mv-acts{display:flex;gap:5px;margin-top:13px}
 .mv-acts button{flex:1;border:1px solid rgba(255,255,255,.16);background:rgba(255,255,255,.08);
-  border-radius:13px;padding:10px 4px;color:#fff;font-family:inherit;font-size:11px;font-weight:600;cursor:pointer;
+  border-radius:13px;padding:9px 2px;color:#fff;font-family:inherit;font-size:10px;font-weight:600;cursor:pointer;
   display:flex;flex-direction:column;gap:4px;align-items:center}
-.mv-acts .si{font-size:16px}
+.mv-acts .si{font-size:15px}
 .mv-close{position:absolute;top:66px;right:18px;z-index:5;width:34px;height:34px;border-radius:50%;border:1px solid rgba(255,255,255,.25);
   background:rgba(0,0,0,.3);backdrop-filter:blur(10px);color:#fff;font-size:15px;cursor:pointer;
   display:flex;align-items:center;justify-content:center}
-/* ================= THEIR WORLD ================= */
-#world .world-head{display:flex;align-items:center;gap:14px;margin-bottom:4px}
-#world .wav{width:62px;height:62px;border-radius:50%;display:flex;align-items:center;justify-content:center;
-  font-size:24px;font-weight:600;color:#fff;box-shadow:var(--shadow-float)}
-.perm-note{display:flex;align-items:center;gap:8px;font-size:12.5px;color:var(--ink-2);
-  background:var(--surface);border:1px solid var(--stroke);border-radius:14px;padding:11px 14px;margin:14px 0 6px;
-  backdrop-filter:blur(24px);-webkit-backdrop-filter:blur(24px)}
-/* ---------- onboarding ---------- */
-.onboard{position:absolute;inset:0;z-index:210;display:flex;flex-direction:column;
+/* onboarding */
+.onboard{position:absolute;inset:0;z-index:310;display:flex;flex-direction:column;
   background:var(--bg-grad);padding:0 30px calc(40px + env(safe-area-inset-bottom));
   transition:opacity .6s, transform .6s cubic-bezier(.3,.8,.3,1)}
 .onboard.gone{opacity:0;transform:scale(1.04);pointer-events:none}
@@ -449,12 +605,19 @@ h1.large{font-size:34px;font-weight:700;letter-spacing:-.6px;line-height:1.08}
 .onboard h1{font-size:38px;font-weight:700;letter-spacing:-.8px;line-height:1.06}
 .onboard .tag{font-size:16px;color:var(--ink-2);margin-top:12px;line-height:1.5;max-width:300px}
 .ob-foot{font-size:12px;color:var(--ink-3);text-align:center;margin-top:14px;display:flex;align-items:center;justify-content:center;gap:6px}
+.ob-interests{flex:1;overflow-y:auto;scrollbar-width:none;padding-top:84px;display:none}
+.ob-interests::-webkit-scrollbar{display:none}
+.int-grid{display:flex;flex-wrap:wrap;gap:8px;margin-top:12px}
+.int{padding:9px 15px;border-radius:100px;font-size:13.5px;font-weight:600;cursor:pointer;
+  background:var(--surface);border:1px solid var(--stroke);color:var(--ink-2);transition:all .15s}
+.int.on{background:var(--ink);color:var(--bg);border-color:transparent}
+.ob-interests h2{font-size:24px;font-weight:700;letter-spacing:-.4px}
+.ob-interests .gl{font-size:13px;font-weight:600;color:var(--ink-2);margin-top:22px}
 </style>
 </head>
 <body>
 <div class="device" id="device">
   <div class="island"></div>
-
   <div class="statusbar" id="statusbar">
     <div>9:41</div>
     <div class="right">
@@ -466,23 +629,37 @@ h1.large{font-size:34px;font-weight:700;letter-spacing:-.6px;line-height:1.08}
 
   <!-- ============ ONBOARDING ============ -->
   <div class="onboard" id="onboard">
-    <div class="ob-orbit">
-      <div class="orbit-ring r1"></div>
-      <div class="orbit-ring r2"></div>
-      <div class="ob-center"></div>
-      <div class="ob-sat" style="background:linear-gradient(140deg,#F0B58B,#D98C57);top:18%;left:14%;animation-delay:0s">☀︎</div>
-      <div class="ob-sat" style="background:linear-gradient(140deg,#AECFAF,#7FA681);top:14%;right:16%;animation-delay:1.2s">♡</div>
-      <div class="ob-sat" style="background:linear-gradient(140deg,#93A3C4,#5F7099);bottom:22%;left:9%;animation-delay:2.1s">▦</div>
-      <div class="ob-sat" style="background:linear-gradient(140deg,#C7A0D6,#9A6BB0);bottom:16%;right:12%;animation-delay:.6s">✦</div>
-      <div class="ob-sat" style="background:linear-gradient(140deg,#8FC2BF,#558A87);top:46%;right:2%;animation-delay:1.8s;width:42px;height:42px;font-size:17px">⌘</div>
+    <div id="obStep1" style="display:flex;flex-direction:column;flex:1">
+      <div class="ob-orbit">
+        <div class="orbit-ring r1"></div>
+        <div class="orbit-ring r2"></div>
+        <div class="ob-center"></div>
+        <div class="ob-sat" style="background:linear-gradient(140deg,#F0B58B,#D98C57);top:18%;left:14%;animation-delay:0s">☀︎</div>
+        <div class="ob-sat" style="background:linear-gradient(140deg,#AECFAF,#7FA681);top:14%;right:16%;animation-delay:1.2s">♡</div>
+        <div class="ob-sat" style="background:linear-gradient(140deg,#93A3C4,#5F7099);bottom:22%;left:9%;animation-delay:2.1s">▦</div>
+        <div class="ob-sat" style="background:linear-gradient(140deg,#C7A0D6,#9A6BB0);bottom:16%;right:12%;animation-delay:.6s">✦</div>
+        <div class="ob-sat" style="background:linear-gradient(140deg,#8FC2BF,#558A87);top:46%;right:2%;animation-delay:1.8s;width:42px;height:42px;font-size:17px">⌘</div>
+      </div>
+      <p class="eyebrow" style="margin-bottom:8px">Introducing</p>
+      <h1>Apple World</h1>
+      <p class="tag">Your people, projects, memories, and plans — organized by context. Everything you share. Everyone you know. In one place.</p>
+      <button class="cta" onclick="obNext()">Continue</button>
+      <div class="ob-foot">
+        <svg width="11" height="13" viewBox="0 0 11 13" fill="currentColor"><path d="M5.5 0C4 0 2.8 1.2 2.8 2.7v1.6H2c-.9 0-1.6.7-1.6 1.6v5c0 .9.7 1.6 1.6 1.6h7c.9 0 1.6-.7 1.6-1.6v-5c0-.9-.7-1.6-1.6-1.6h-.8V2.7C8.2 1.2 7 0 5.5 0Zm0 1.3c.8 0 1.4.6 1.4 1.4v1.6H4.1V2.7c0-.8.6-1.4 1.4-1.4Z"/></svg>
+        Private by design. Nothing leaves your circles.
+      </div>
     </div>
-    <p class="eyebrow" style="margin-bottom:8px">Introducing</p>
-    <h1>Apple World</h1>
-    <p class="tag">Your people, projects, memories, and plans — organized by context. Everything you share. Everyone you know. In one place.</p>
-    <button class="cta" onclick="enter()">Continue</button>
-    <div class="ob-foot">
-      <svg width="11" height="13" viewBox="0 0 11 13" fill="currentColor"><path d="M5.5 0C4 0 2.8 1.2 2.8 2.7v1.6H2c-.9 0-1.6.7-1.6 1.6v5c0 .9.7 1.6 1.6 1.6h7c.9 0 1.6-.7 1.6-1.6v-5c0-.9-.7-1.6-1.6-1.6h-.8V2.7C8.2 1.2 7 0 5.5 0Zm0 1.3c.8 0 1.4.6 1.4 1.4v1.6H4.1V2.7c0-.8.6-1.4 1.4-1.4Z"/></svg>
-      Private by design. Nothing leaves your circles.
+    <div class="ob-interests" id="obStep2">
+      <h2>What is your world made of?</h2>
+      <p class="tag" style="margin-top:8px">Interests shape discovery — never your privacy. You control what they reveal.</p>
+      <div class="gl">General</div>
+      <div class="int-grid" data-g="gen"></div>
+      <div class="gl">Creative</div>
+      <div class="int-grid" data-g="cre"></div>
+      <div class="gl">Business</div>
+      <div class="int-grid" data-g="biz"></div>
+      <button class="cta" onclick="enter()">Enter Apple World</button>
+      <div class="ob-foot" style="margin-bottom:10px">You can change these anytime in Discovery Controls.</div>
     </div>
   </div>
 
@@ -493,7 +670,13 @@ h1.large{font-size:34px;font-weight:700;letter-spacing:-.6px;line-height:1.08}
         <p class="eyebrow">Wednesday, June 10</p>
         <h1 class="large">Now</h1>
       </div>
-      <div onclick="go('profile')" style="width:42px;height:42px;border-radius:50%;background:linear-gradient(140deg,#7C8DB0,#4E5D7E);color:#fff;display:flex;align-items:center;justify-content:center;font-weight:600;font-size:16px;cursor:pointer;box-shadow:var(--shadow);border:1px solid var(--stroke)">A</div>
+      <div class="hbtns">
+        <button class="hbtn" onclick="go('inbox')" aria-label="World Inbox">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M4 12.8 9 12.8 10.8 16 13.2 16 15 12.8 20 12.8" stroke-linejoin="round"/><rect x="4" y="5" width="16" height="14.5" rx="4.5"/></svg>
+          <span class="badge">5</span>
+        </button>
+        <button class="hbtn avb" onclick="go('profile')" aria-label="Profile">A</button>
+      </div>
     </div>
     <p class="subhead">A calm look at what matters today.</p>
     <div class="hero-strip" id="heroStrip"></div>
@@ -520,7 +703,7 @@ h1.large{font-size:34px;font-weight:700;letter-spacing:-.6px;line-height:1.08}
   <div class="screen" id="moments">
     <p class="eyebrow">Everything you've seen and shared</p>
     <h1 class="large">Moments</h1>
-    <p class="subhead">Your visual world, gathered by the people it belongs to.</p>
+    <p class="subhead">A permission-based view into the people and worlds that matter.</p>
     <div class="filterbar" id="filterbar"></div>
     <div id="momentsBody"></div>
   </div>
@@ -531,6 +714,8 @@ h1.large{font-size:34px;font-weight:700;letter-spacing:-.6px;line-height:1.08}
     <h1 class="large">Boards</h1>
     <p class="subhead">Each part of life has its own space, people, and privacy.</p>
     <div style="margin-top:20px" id="boardList"></div>
+    <div class="section-label"><span>Public Boards you can join</span></div>
+    <div id="publicBoards"></div>
   </div>
 
   <!-- ============ BOARD DETAIL ============ -->
@@ -541,18 +726,42 @@ h1.large{font-size:34px;font-weight:700;letter-spacing:-.6px;line-height:1.08}
 
   <!-- ============ PEOPLE ============ -->
   <div class="screen" id="people">
-    <p class="eyebrow">Circles, not followers</p>
-    <h1 class="large">People</h1>
-    <p class="subhead">You don't gain followers. You give people access to parts of your world.</p>
-    <div class="card" style="margin-top:20px;padding:6px 16px;cursor:default" id="circleList"></div>
-    <div class="section-label"><span>Around you now</span></div>
-    <div id="nearby"></div>
+    <div style="display:flex;align-items:flex-end;justify-content:space-between">
+      <div>
+        <p class="eyebrow">Circles, not followers</p>
+        <h1 class="large">People</h1>
+      </div>
+      <div class="hbtns">
+        <button class="hbtn" onclick="go('inbox')" aria-label="World Inbox">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M4 12.8 9 12.8 10.8 16 13.2 16 15 12.8 20 12.8" stroke-linejoin="round"/><rect x="4" y="5" width="16" height="14.5" rx="4.5"/></svg>
+          <span class="badge">5</span>
+        </button>
+      </div>
+    </div>
+    <p class="subhead">Following someone means entering the parts of their world they choose to share with you.</p>
+    <div class="searchwrap">
+      <div class="search">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="11" cy="11" r="7"/><path d="m20 20-3.2-3.2" stroke-linecap="round"/></svg>
+        <input id="searchInput" placeholder="Search people, interests, Boards…" oninput="onSearch(this.value)">
+      </div>
+    </div>
+    <div id="searchResults" style="display:none"></div>
+    <div id="peopleBody"></div>
   </div>
 
   <!-- ============ THEIR WORLD ============ -->
   <div class="screen" id="world">
     <span class="back" onclick="go('people')">‹ People</span>
     <div id="worldBody"></div>
+  </div>
+
+  <!-- ============ WORLD INBOX ============ -->
+  <div class="screen" id="inbox">
+    <span class="back" onclick="go('now')">‹ Now</span>
+    <p class="eyebrow">Calm, curated, yours</p>
+    <h1 class="large">World Inbox</h1>
+    <p class="subhead">Messages, shared moments, invites, and quiet AI summaries — nothing shouting.</p>
+    <div id="inboxBody"></div>
   </div>
 
   <!-- ============ PROFILE ============ -->
@@ -571,6 +780,41 @@ h1.large{font-size:34px;font-weight:700;letter-spacing:-.6px;line-height:1.08}
     </div>
     <p class="viewing-note" id="viewNote"></p>
     <div id="faceBody"></div>
+    <div class="section-label"><span>Discovery</span></div>
+    <div class="card" onclick="openPrivacy()">
+      <div class="row">
+        <div class="glyph" style="background:linear-gradient(140deg,#9AA0AC,#5C6068)">⛨</div>
+        <div><h3>Discovery Controls</h3><p>Who can find you, and what discovery may use</p></div>
+        <span class="chev">›</span>
+      </div>
+    </div>
+  </div>
+
+  <!-- ============ CHAT ============ -->
+  <div class="screen" id="chat">
+    <div class="chat-head">
+      <span class="cback" onclick="closeChat()">‹</span>
+      <div class="cav" id="chHeadAv" onclick="openWorldFromChat()">M</div>
+      <div style="min-width:0">
+        <h3 id="chName">Chat</h3>
+        <div class="ctx" id="chCtx"></div>
+      </div>
+      <div class="ft">
+        <button class="iconbtn" onclick="toast('FaceTime starting…')" aria-label="FaceTime">◉</button>
+        <button class="iconbtn" onclick="openChatPlus()" aria-label="More">＋</button>
+      </div>
+    </div>
+    <div class="chat-ctxchips" id="chChips"></div>
+    <div class="chat-body" id="chBody"></div>
+    <div class="chat-input">
+      <button class="cibtn" onclick="openChatPlus()" aria-label="Attach">＋</button>
+      <div class="cinp">
+        <input id="chInput" placeholder="Message…" onkeydown="if(event.key==='Enter')sendMsg()">
+        <button class="cibtn orb" onclick="openChatAI()" aria-label="AI helper"></button>
+        <button class="cibtn" onclick="toast('Voice note recording…')" aria-label="Voice">🎙</button>
+        <button class="cibtn send" onclick="sendMsg()" aria-label="Send">↑</button>
+      </div>
+    </div>
   </div>
 
   <!-- ============ TAB BAR ============ -->
@@ -620,7 +864,7 @@ h1.large{font-size:34px;font-weight:700;letter-spacing:-.6px;line-height:1.08}
       <h2>Where should this live?</h2>
       <p class="s-sub" id="aiPlaceHint"></p>
       <div style="margin-top:18px" id="destList"></div>
-      <div class="section-label" style="margin-top:20px"><span>Who can see it</span></div>
+      <div class="sl">Who can see it</div>
       <div class="privacy-row" id="pvRow">
         <div class="pv" onclick="setPv(this)">Only Me</div>
         <div class="pv on" onclick="setPv(this)">Circle</div>
@@ -644,6 +888,64 @@ h1.large{font-size:34px;font-weight:700;letter-spacing:-.6px;line-height:1.08}
     <div class="ai-sug" id="aiSugs"></div>
   </div>
 
+  <!-- generic action sheet -->
+  <div class="sheet" id="actSheet">
+    <div class="grab"></div>
+    <h2 id="actTitle"></h2>
+    <p class="s-sub" id="actSub"></p>
+    <div style="margin-top:16px" id="actBtns"></div>
+  </div>
+
+  <!-- connect / relationship request -->
+  <div class="sheet" id="connectSheet">
+    <div class="grab"></div>
+    <h2 id="cnTitle">Connect</h2>
+    <p class="s-sub">A connection is an invitation into part of your world — you choose which part.</p>
+    <input class="note-input" id="cnNote" placeholder="Add a short note…">
+    <div class="sl">Relationship type</div>
+    <div class="privacy-row" id="cnType"></div>
+    <div class="sl">Add to Circle</div>
+    <div class="privacy-row" id="cnCircle"></div>
+    <div class="sl">What they can see</div>
+    <div class="privacy-row" id="cnSee"></div>
+    <button class="cta" onclick="sendConnect()">Send Request</button>
+  </div>
+
+  <!-- why am i seeing this -->
+  <div class="sheet" id="whySheet">
+    <div class="grab"></div>
+    <h2>Why am I seeing this?</h2>
+    <div class="ai-msg">
+      <div class="ai-orb"></div>
+      <div class="ai-bubble" id="whyBubble"></div>
+    </div>
+    <p class="s-sub" style="margin-top:14px" id="whyData"></p>
+    <div style="margin-top:14px" id="whyActs"></div>
+  </div>
+
+  <!-- discovery privacy controls -->
+  <div class="sheet" id="privacySheet">
+    <div class="grab"></div>
+    <h2>Discovery Controls</h2>
+    <p class="s-sub">You decide who can find you — and what finding you reveals.</p>
+    <div class="sl">Who can discover me</div>
+    <div style="margin-top:4px" id="pcWho"></div>
+    <div class="sl">What discovery may use</div>
+    <div class="privacy-row" id="pcUse"></div>
+    <p class="s-sub" style="margin-top:16px">Every suggestion you see explains itself. Every suggestion of you does too.</p>
+    <button class="cta" onclick="closeSheets();toast('Discovery preferences saved')">Save</button>
+  </div>
+
+  <!-- AI discovery -->
+  <div class="sheet" id="findSheet">
+    <div class="grab"></div>
+    <h2>Find people for me</h2>
+    <p class="s-sub">Ask in plain words. Results always explain why they match.</p>
+    <div class="ai-sug" id="findPrompts"></div>
+    <div id="findResult"></div>
+    <p class="s-sub" style="margin-top:14px;font-size:12px" id="findData"></p>
+  </div>
+
   <!-- ============ STORY VIEWER ============ -->
   <div class="storyview" id="storyview">
     <div class="sv-bg" id="svBg"></div>
@@ -658,20 +960,22 @@ h1.large{font-size:34px;font-weight:700;letter-spacing:-.6px;line-height:1.08}
     <div class="sv-top">
       <div class="sv-progress" id="svProgress"></div>
       <div class="sv-id">
-        <div class="sav" id="svAv">M</div>
-        <div>
-          <h4 id="svName"></h4>
-          <p id="svCtx"></p>
+        <div class="sav" id="svAv" onclick="worldFromStory()">M</div>
+        <div style="min-width:0">
+          <h4 id="svName" onclick="worldFromStory()"></h4>
+          <div class="pline" id="svCtx"></div>
         </div>
         <button class="sv-close" onclick="closeStory()" aria-label="Close">✕</button>
       </div>
     </div>
     <div class="sv-hint"><span class="arr">↑</span>SWIPE</div>
     <div class="sv-actions">
-      <button class="sv-act" onclick="storyAct('Replied privately')"><span class="si">💬</span><span>Reply<br>Privately</span></button>
-      <button class="sv-act" onclick="storyAct('Saved to Memories')"><span class="si">🤍</span><span>Save to<br>Memories</span></button>
+      <button class="sv-act" onclick="storyReply()"><span class="si">↩︎</span><span>Reply<br>Privately</span></button>
+      <button class="sv-act" onclick="storyMessage()"><span class="si">💬</span><span>Message</span></button>
+      <button class="sv-act" onclick="storyAct('Saved to Memories')"><span class="si">🤍</span><span>Save</span></button>
       <button class="sv-act" onclick="storyAct('Added to Board')"><span class="si">▦</span><span>Add to<br>Board</span></button>
-      <button class="sv-act" onclick="storyAct('Presence sent')"><span class="si">✨</span><span>React with<br>Presence</span></button>
+      <button class="sv-act" onclick="storyAct('Presence sent')"><span class="si">✨</span><span>Presence</span></button>
+      <button class="sv-act" onclick="storyMore()"><span class="si">⋯</span><span>More</span></button>
     </div>
   </div>
 
@@ -684,12 +988,14 @@ h1.large{font-size:34px;font-weight:700;letter-spacing:-.6px;line-height:1.08}
     </div>
     <div class="mv-panel">
       <h3 id="mvTitle"></h3>
-      <div class="ctx"><span class="bicon" id="mvBicon"></span><span id="mvCtx"></span></div>
+      <div class="ctx"><span class="bicon" id="mvBicon"></span><span id="mvCtx"></span><span class="pchip" id="mvPriv"></span></div>
       <div class="mv-acts">
-        <button onclick="mediaAct('Saved to Memories')"><span class="si">🤍</span>Save to Memory</button>
-        <button onclick="mediaAct('Replied privately')"><span class="si">💬</span>Reply Privately</button>
-        <button onclick="mediaAct('Added to Board')"><span class="si">▦</span>Add to Board</button>
-        <button onclick="mediaAct('Moment sent')"><span class="si">✈︎</span>Send Moment</button>
+        <button onclick="mediaReply()"><span class="si">↩︎</span>Reply</button>
+        <button onclick="mediaMessage()"><span class="si">💬</span>Message</button>
+        <button onclick="toast('Saved to Memories')"><span class="si">🤍</span>Save</button>
+        <button onclick="toast('Added to Board')"><span class="si">▦</span>Board</button>
+        <button onclick="toast('Presence sent')"><span class="si">✨</span>React</button>
+        <button onclick="mediaMore()"><span class="si">⋯</span>More</button>
       </div>
     </div>
   </div>
@@ -700,105 +1006,68 @@ h1.large{font-size:34px;font-weight:700;letter-spacing:-.6px;line-height:1.08}
 <script>
 /* ================= DATA ================= */
 const BOARDS = {
-  personal:{
-    name:"Personal", icon:"☀︎", tint:"--t-personal",
-    grad:"linear-gradient(140deg,#F0B58B,#D98C57)",
-    desc:"Friends, stories, memories, casual updates.",
-    members:["M","L","K","T","+9"], live:"2 new stories",
-    timeline:[
-      ["4 photos from today are ready for a Story","Auto-curated from Camera · tap to review"],
+  personal:{name:"Personal",icon:"☀︎",tint:"--t-personal",grad:"linear-gradient(140deg,#F0B58B,#D98C57)",
+    desc:"Friends, stories, memories, casual updates.",members:["M","L","K","T","+9"],live:"2 new stories",
+    timeline:[["4 photos from today are ready for a Story","Auto-curated from Camera · tap to review"],
       ["Liis replied to your Saaremaa memory","“This weekend was everything” · 2h ago"],
-      ["Weekend recap saved to Memories","12 photos · 1 video · Saturday–Sunday"]
-    ],
+      ["Weekend recap saved to Memories","12 photos · 1 video · Saturday–Sunday"]],
     tasks:[["Reply to Martin about Friday","Today"],["Back up June photos","This week"]],
     files:[["Saaremaa Weekend","Memory · 12 items","🖼"],["Summer plans","Note · edited yesterday","✶"]],
-    ai:{ hint:"Make a recap of last weekend.",
+    ai:{hint:"Make a recap of last weekend.",
       bubble:"I pulled the 12 best moments from Saturday and Sunday — golden hour at the beach, the bonfire, and the drive home. Want a one-minute recap story for your Close Friends?",
-      sugs:["Create the weekend recap","Pick the 4 best photos for a Story","Remind me of moments like this next June"]}
-  },
-  family:{
-    name:"Family", icon:"♡", tint:"--t-family",
-    grad:"linear-gradient(140deg,#AECFAF,#7FA681)",
-    desc:"Private photos, events, birthdays, shared memories.",
-    members:["E","A","R","+4"], live:"12 new photos",
-    timeline:[
-      ["Family shared 12 photos from Sunday","Grandma's garden · added by Ema"],
+      sugs:["Create the weekend recap","Pick the 4 best photos for a Story","Remind me of moments like this next June"]}},
+  family:{name:"Family",icon:"♡",tint:"--t-family",grad:"linear-gradient(140deg,#AECFAF,#7FA681)",
+    desc:"Private photos, events, birthdays, shared memories.",members:["E","A","R","+4"],live:"12 new photos",
+    timeline:[["Family shared 12 photos from Sunday","Grandma's garden · added by Ema"],
       ["Birthday coming up: Rasmus turns 9","June 18 · gift thread open"],
-      ["Sunday lunch confirmed","6 joined · 13:00 at home"]
-    ],
-    tasks:[["Order Rasmus's gift","Before Jun 16"],["Print garden photos for grandma","This month"]],
+      ["Sunday lunch confirmed","6 joined · 13:00 at home"]],
+    tasks:[["Order a gift for Rasmus","Before Jun 16"],["Print garden photos for grandma","This month"]],
     files:[["Grandma's Birthday","Album · 64 photos","🖼"],["Family recipes","Shared note","✶"]],
-    ai:{ hint:"Find the best photos from grandma's birthday.",
+    ai:{hint:"Find the best photos from the birthday.",
       bubble:"From the 64 photos in the birthday album, 9 stand out — clear faces, good light, and everyone smiling in three of them. The one of grandma laughing by the cake is the keeper.",
-      sugs:["Show the 9 best photos","Make a printable mini-album","Send the best one to the family circle"]}
-  },
-  business:{
-    name:"Business", icon:"▦", tint:"--t-business",
-    grad:"linear-gradient(140deg,#93A3C4,#5F7099)",
-    desc:"Portfolio, client contacts, work updates, meetings.",
-    members:["D","R","Y","+6"], live:"2 client replies",
-    timeline:[
-      ["2 client replies waiting","Darya (GoEast) and Ray (VIP Films)"],
+      sugs:["Show the 9 best photos","Make a printable mini-album","Send the best one to the family circle"]}},
+  business:{name:"Business",icon:"▦",tint:"--t-business",grad:"linear-gradient(140deg,#93A3C4,#5F7099)",
+    desc:"Portfolio, clients, work updates, professional network.",members:["D","R","Y","+6"],live:"2 client replies",
+    timeline:[["2 client replies waiting","Darya (GoEast) and Ray (VIP Films)"],
       ["Yana viewed the 20-video proposal","Yesterday, 18:42 · no reply yet"],
-      ["Invoice #047 marked as paid","Equiti · received via Wise"]
-    ],
+      ["Invoice #047 marked as paid","Equiti · received via Wise"]],
     tasks:[["Send revised quote to Yana","Today"],["Prep GoEast call notes","16:00"],["Update portfolio with McLaren spec","This week"]],
     files:[["Huexlabs Portfolio 2026","PDF · updated Monday","📄"],["Yana — 20 video scope","Proposal · v3","📄"],["Client contacts","27 people","👥"]],
-    ai:{ hint:"Prepare a clean client update.",
+    ai:{hint:"Prepare a clean client update.",
       bubble:"Drafted a short update for Darya: timeline confirmed, first stills Thursday, review call Friday. Warm, direct, three sentences. Want to read it before it goes to the thread?",
-      sugs:["Show the draft","Summarize this week's client activity","Turn Ray's last message into tasks"]}
-  },
-  creative:{
-    name:"Creative", icon:"✦", tint:"--t-creative",
-    grad:"linear-gradient(140deg,#C7A0D6,#9A6BB0)",
-    desc:"Moodboards, drafts, references, AI ideas.",
-    members:["A","J","+2"], live:"6 new references",
-    timeline:[
-      ["AI found 6 references for your Creative Board","Night exteriors · neutral grade · automotive"],
+      sugs:["Show the draft","Summarize this week of client activity","Turn the last message from Ray into tasks"]}},
+  creative:{name:"Creative",icon:"✦",tint:"--t-creative",grad:"linear-gradient(140deg,#C7A0D6,#9A6BB0)",
+    desc:"Moodboards, drafts, references, AI ideas.",members:["A","J","+2"],live:"6 new references",
+    timeline:[["AI found 6 references for your Creative Board","Night exteriors · neutral grade · automotive"],
       ["“Before the Sunrise” draft updated","Shot 14 reworked · desert dolly pass"],
-      ["New moodboard: Editorial Chrome","9 references · started today"]
-    ],
+      ["New moodboard: Editorial Chrome","9 references · started today"]],
     tasks:[["Pick final grade direction","Today"],["Storyboard shots 15–20","Thu"]],
     files:[["Before the Sunrise","Moodboard · 22 refs","▦"],["Editorial Chrome","Moodboard · 9 refs","▦"],["Draft cut v2","Video · 0:48","🎞"]],
-    ai:{ hint:"Organize these references into 3 visual directions.",
+    ai:{hint:"Organize these references into 3 visual directions.",
       bubble:"Your 22 references split cleanly into three directions: Night Chrome (cold reflections, sodium accents), Desert Minimal (dawn, dust, long lenses), and Editorial Still (static frames, fashion light). Want them as separate moodboards?",
-      sugs:["Split into 3 moodboards","Name each direction","Find 5 more refs for Night Chrome"]}
-  },
-  team:{
-    name:"Team: Tartu", icon:"⌘", tint:"--t-team",
-    grad:"linear-gradient(140deg,#8FC2BF,#558A87)",
-    desc:"Group plans, tasks, files, shared updates.",
-    members:["K","P","S","M","+3"], live:"Vote open",
-    timeline:[
-      ["Tartu Team is voting for Saturday plans","5 of 7 voted · river picnic leading"],
+      sugs:["Split into 3 moodboards","Name each direction","Find 5 more refs for Night Chrome"]}},
+  team:{name:"Team: Tartu",icon:"⌘",tint:"--t-team",grad:"linear-gradient(140deg,#8FC2BF,#558A87)",
+    desc:"Group plans, tasks, files, shared updates.",members:["K","P","S","M","+3"],live:"Vote open",
+    timeline:[["Tartu Team is voting for Saturday plans","5 of 7 voted · river picnic leading"],
       ["Priit uploaded the venue shortlist","3 options · with prices"],
-      ["Deadline moved: shared deck due Friday","Agreed in chat · calendar updated"]
-    ],
+      ["Deadline moved: shared deck due Friday","Agreed in chat · calendar updated"]],
     tasks:[["Vote on Saturday plan","Today"],["Review shared deck","Fri"],["Confirm carpool","Sat 10:00"]],
     files:[["Venue shortlist","Note · 3 options","✶"],["Shared deck","Keynote · due Fri","📄"]],
-    ai:{ hint:"Summarize what happened this week.",
-      bubble:"This week in Tartu Team: the Saturday vote is nearly done (river picnic ahead 4–1), the deck deadline moved to Friday, and Priit's venue shortlist needs two more opinions. You haven't voted yet.",
-      sugs:["Cast my vote","Remind the two who haven't voted","Add deck review to my Friday"]}
-  },
-  out:{
-    name:"Going Out", icon:"☾", tint:"--t-out",
-    grad:"linear-gradient(140deg,#A292D6,#6F5BA8)",
-    desc:"Friends available tonight, places, invites, live plans.",
-    members:["M","K","L","+5"], live:"3 free tonight",
-    timeline:[
-      ["Martin is in Tallinn tonight","Close Friends · reacted with Presence"],
+    ai:{hint:"Summarize what happened this week.",
+      bubble:"This week in Tartu Team: the Saturday vote is nearly done (river picnic ahead 4–1), the deck deadline moved to Friday, and the venue shortlist from Priit needs two more opinions. You have not voted yet.",
+      sugs:["Cast my vote","Remind the two who have not voted","Add deck review to my Friday"]}},
+  out:{name:"Going Out",icon:"☾",tint:"--t-out",grad:"linear-gradient(140deg,#A292D6,#6F5BA8)",
+    desc:"Friends available tonight, places, invites, live plans.",members:["M","K","L","+5"],live:"3 free tonight",
+    timeline:[["Martin is in Tallinn tonight","Close Friends · reacted with Presence"],
       ["3 friends are free after 20:00","Kristjan, Liis, Martin"],
-      ["Pegasus table held until 20:45","Old Town · 4 seats"]
-    ],
+      ["Pegasus table held until 20:45","Old Town · 4 seats"]],
     tasks:[["Confirm dinner headcount","By 19:00"]],
     files:[["Tonight","Live plan · 4 in","☾"]],
-    ai:{ hint:"Who is free tonight and what's the easiest plan?",
+    ai:{hint:"Who is free tonight and what is the easiest plan?",
       bubble:"Three people are free after 20:00 and everyone is within 15 minutes of Old Town. Easiest plan: keep the Pegasus table at 20:30 and send one invite to all three. No back-and-forth needed.",
-      sugs:["Send the invite to all three","Suggest a backup place","Share my Presence for tonight"]}
-  }
+      sugs:["Send the invite to all three","Suggest a backup place","Share my Presence for tonight"]}}
 };
 
-/* photo gradients act as high-quality lifestyle placeholders */
 const G = {
   golden:"linear-gradient(165deg,#FFE3B8 0%,#F4A871 38%,#C96A5A 70%,#6E3A56 100%)",
   pirita:"linear-gradient(160deg,#FFD9A8 0%,#E8956B 55%,#9C5C8F 100%)",
@@ -815,68 +1084,173 @@ const G = {
   fog:"linear-gradient(165deg,#F2F2F4 0%,#C4C8D2 45%,#7E8698 78%,#3E4452 100%)",
   alps:"linear-gradient(165deg,#EAF2FA 0%,#AECBE8 40%,#5E7FA8 72%,#2A3A52 100%)",
   lights:"linear-gradient(165deg,#1E1B2E 0%,#4E3568 38%,#9A6BB0 68%,#F0B58B 100%)",
-  kitchen:"linear-gradient(160deg,#FFF4E4 0%,#EFC9A0 48%,#B98A66 80%,#5E4536 100%)"
+  kitchen:"linear-gradient(160deg,#FFF4E4 0%,#EFC9A0 48%,#B98A66 80%,#5E4536 100%)",
+  berlin:"linear-gradient(165deg,#E4E2EA 0%,#A8A2C4 42%,#5E5880 75%,#28243A 100%)",
+  runway:"linear-gradient(165deg,#F4E2E8 0%,#D49AB8 42%,#8E5480 75%,#3A2238 100%)",
+  harbor:"linear-gradient(165deg,#DCEAF2 0%,#92B4CC 45%,#48688A 78%,#1E3048 100%)"
 };
 
-/* media library: id auto = index */
+/* media: type photo|video|story; pid links to PEOPLE */
 const MEDIA = [
-  {g:G.golden, t:"Golden hour, Pirita beach", by:"Liis", board:"personal", time:"Today 21:14", video:false},
-  {g:G.nightdrive,t:"Night drive cut, frame 0:31", by:"You", board:"creative", time:"Today 19:02", video:true},
-  {g:G.garden, t:"Grandma's garden", by:"Ema", board:"family", time:"Sunday", video:false},
-  {g:G.studio, t:"Set B, lighting test", by:"Darya", board:"business", time:"Today 14:30", video:false},
-  {g:G.river, t:"Emajõgi at dusk", by:"Priit", board:"team", time:"Yesterday", video:false},
-  {g:G.oldtown,t:"Old Town, before dinner", by:"Martin", board:"out", time:"Tonight", video:false},
-  {g:G.desert, t:"Before the Sunrise — ref 14", by:"You", board:"creative", time:"Monday", video:false},
-  {g:G.cake, t:"The cake moment", by:"Anu", board:"family", time:"Sunday", video:false},
-  {g:G.sea, t:"Ferry home, upper deck", by:"You", board:"personal", time:"Saturday", video:false},
-  {g:G.chrome, t:"Editorial Chrome — ref 3", by:"Jaan", board:"creative", time:"Today", video:false},
-  {g:G.forest, t:"Trail run, Nõmme", by:"Kristjan", board:"personal", time:"Tuesday", video:false},
-  {g:G.kitchen,t:"Sunday lunch prep", by:"Ema", board:"family", time:"Sunday", video:true},
-  {g:G.fog, t:"Morning fog, Kadriorg", by:"Public Story", board:"public", time:"Today", video:false},
-  {g:G.alps, t:"Quiet line of the Alps", by:"Public Story", board:"public", time:"This week", video:false},
-  {g:G.lights, t:"City after rain", by:"Public Story", board:"public", time:"Yesterday", video:false},
-  {g:G.pirita, t:"Last light, Saaremaa", by:"You", board:"personal", time:"Memory · June 2025", video:false}
+  {g:G.golden, t:"Golden hour, Pirita beach", by:"Liis", pid:"liis", board:"personal", time:"Today 21:14", type:"photo", priv:"Close Friends"},
+  {g:G.nightdrive,t:"Night drive cut, frame 0:31", by:"You", pid:null, board:"creative", time:"Today 19:02", type:"video", priv:"Creative Circle"},
+  {g:G.garden, t:"Grandma's garden", by:"Ema", pid:"ema", board:"family", time:"Sunday", type:"photo", priv:"Family"},
+  {g:G.studio, t:"Set B, lighting test", by:"Darya", pid:"darya", board:"business", time:"Today 14:30", type:"photo", priv:"Business"},
+  {g:G.river, t:"Emajõgi at dusk", by:"Priit", pid:"priit", board:"team", time:"Yesterday", type:"photo", priv:"Team"},
+  {g:G.oldtown,t:"Old Town, before dinner", by:"Martin", pid:"martin", board:"out", time:"Tonight", type:"photo", priv:"Close Friends"},
+  {g:G.desert, t:"Before the Sunrise — ref 14", by:"You", pid:null, board:"creative", time:"Monday", type:"photo", priv:"Creative Circle"},
+  {g:G.cake, t:"The cake moment", by:"Anu", pid:"ema", board:"family", time:"Sunday", type:"photo", priv:"Family"},
+  {g:G.sea, t:"Ferry home, upper deck", by:"You", pid:null, board:"personal", time:"Saturday", type:"photo", priv:"Close Friends"},
+  {g:G.chrome, t:"Editorial Chrome — ref 3", by:"Marta", pid:"marta", board:"creative", time:"Today", type:"photo", priv:"Creative Circle"},
+  {g:G.forest, t:"Trail run, Nõmme", by:"Kristjan", pid:"kristjan", board:"personal", time:"Tuesday", type:"photo", priv:"Close Friends"},
+  {g:G.kitchen,t:"Sunday lunch prep", by:"Ema", pid:"ema", board:"family", time:"Sunday", type:"video", priv:"Family"},
+  {g:G.fog, t:"Morning fog, Kadriorg", by:"Alex", pid:"alex", board:"public", time:"Today", type:"photo", priv:"Public"},
+  {g:G.alps, t:"Quiet line of the Alps", by:"Laura", pid:"laura", board:"public", time:"This week", type:"photo", priv:"Public"},
+  {g:G.lights, t:"City after rain", by:"Alex", pid:"alex", board:"public", time:"Yesterday", type:"photo", priv:"Public"},
+  {g:G.pirita, t:"Last light, Saaremaa", by:"You", pid:null, board:"personal", time:"Memory · June 2025", type:"photo", priv:"Close Friends"},
+  {g:G.runway, t:"AI fashion test, look 4", by:"Marta", pid:"marta", board:"creative", time:"Today", type:"photo", priv:"Creative Circle"},
+  {g:G.berlin, t:"Berlin, soft morning", by:"Laura", pid:"laura", board:"public", time:"Tuesday", type:"photo", priv:"Public"},
+  {g:G.harbor, t:"Noblessner pier, dusk", by:"Karl", pid:"karl", board:"out", time:"Yesterday", type:"video", priv:"Going Out"},
+  {g:G.fog, t:"Story · quiet start", by:"Laura", pid:"laura", board:"personal", time:"4h ago", type:"story", priv:"Close Friends"}
 ];
 
-/* stories for the immersive viewer (ordered) */
 const STORIES = [
-  {g:G.oldtown, name:"Martin", av:"M", board:"out", title:"Old Town, before dinner", sub:"Holding a table at Pegasus · join us", time:"23m ago"},
-  {g:G.golden, name:"Liis", av:"L", board:"personal", title:"Golden hour, Pirita", sub:"The sea was glass tonight", time:"1h ago"},
-  {g:G.studio, name:"Darya", av:"D", board:"business", title:"Set B, lighting test", sub:"First stills coming Thursday", time:"3h ago"},
-  {g:G.garden, name:"Ema", av:"E", board:"family", title:"Sunday in the garden", sub:"Grandma's roses opened", time:"Sun"},
-  {g:G.nightdrive,name:"You", av:"A", board:"creative", title:"Night drive, cut v2", sub:"Draft frame · grade direction B", time:"Today"},
-  {g:G.river, name:"Priit", av:"P", board:"team", title:"Emajõgi at dusk", sub:"Saturday picnic spot scouted", time:"Yesterday"}
+  {g:G.oldtown, pid:"martin", board:"out", title:"Old Town, before dinner", sub:"Holding a table at Pegasus · join us", time:"23m ago", priv:"Close Friends"},
+  {g:G.golden, pid:"liis", board:"personal", title:"Golden hour, Pirita", sub:"The sea was glass tonight", time:"1h ago", priv:"Close Friends"},
+  {g:G.runway, pid:"marta", board:"creative", title:"AI fashion test, look 4", sub:"New pipeline, first clean output", time:"2h ago", priv:"Creative Circle"},
+  {g:G.studio, pid:"darya", board:"business", title:"Set B, lighting test", sub:"First stills coming Thursday", time:"3h ago", priv:"Business"},
+  {g:G.garden, pid:"ema", board:"family", title:"Sunday in the garden", sub:"The roses opened", time:"Sun", priv:"Family"},
+  {g:G.river, pid:"priit", board:"team", title:"Emajõgi at dusk", sub:"Saturday picnic spot scouted", time:"Yesterday", priv:"Team"}
 ];
 
-const NOW_CARDS = [
-  {key:"out", t:"Martin is in Tallinn tonight", s:"Close Friends · React with Presence", icon:"☾", story:0},
-  {key:"business", t:"Your Business Board has 2 client replies", s:"Darya (GoEast) and Ray (VIP Films)", icon:"▦"},
-  {key:"personal", t:"4 photos from today are ready for a Story", s:"Auto-curated · choose who sees them", icon:"☀︎",
-    collage:[G.golden,G.sea,G.forest,G.pirita]},
-  {key:"team", t:"Tartu Team is voting for Saturday plans", s:"5 of 7 voted · you haven't yet", icon:"⌘"},
-  {key:"creative", t:"AI found 6 references for your Creative Board", s:"Night exteriors · neutral grade", icon:"✦",
-    collage:[G.nightdrive,G.chrome,G.desert,G.lights]},
-  {key:"family", t:"Family shared 12 photos from Sunday", s:"Grandma's garden · added by Ema", icon:"♡",
-    collage:[G.garden,G.cake,G.kitchen]}
+const PEOPLE = {
+  martin:{name:"Martin", av:"M", grad:"linear-gradient(140deg,#F0B58B,#D98C57)", role:"Close friend", city:"Tallinn",
+    presence:"Out tonight", st:"", circle:"Close Friends", state:"circle", media:[5,0,8,10], story:0,
+    boardsShared:["out","personal"], note:"You see what Martin shares with his Close Friends circle.",
+    why:"You are seeing Martin because you are in each other's Close Friends circle and you are both active in Going Out.",
+    whyData:"Used: mutual Circle membership, shared Board activity."},
+  liis:{name:"Liis", av:"L", grad:"linear-gradient(140deg,#E8A87C,#B86A4E)", role:"Close friend", city:"Tallinn",
+    presence:"Shared recently", st:"", circle:"Close Friends", state:"circle", media:[0,8,15], story:1,
+    boardsShared:["personal"], note:"You see what Liis shares with her Close Friends circle.",
+    why:"You are seeing Liis because you are in each other's Close Friends circle.",
+    whyData:"Used: mutual Circle membership."},
+  darya:{name:"Darya", av:"D", grad:"linear-gradient(140deg,#93A3C4,#5F7099)", role:"Producer · GoEast", city:"Tallinn",
+    presence:"Working", st:"focus", circle:"Business Contacts", state:"connected", media:[3], story:3,
+    boardsShared:["business"], note:"You see what Darya shares with Business Contacts only.",
+    why:"You are seeing Darya because you are connected through your Business Board.",
+    whyData:"Used: Board membership, your Business profile."},
+  ema:{name:"Ema", av:"E", grad:"linear-gradient(140deg,#AECFAF,#7FA681)", role:"Family", city:"Tallinn",
+    presence:"Available", st:"", circle:"Family", state:"circle", media:[2,7,11], story:4,
+    boardsShared:["family"], note:"You see what Ema shares with Family.",
+    why:"You are seeing Ema because you share the Family Board.",
+    whyData:"Used: mutual Board membership."},
+  priit:{name:"Priit", av:"P", grad:"linear-gradient(140deg,#8FC2BF,#558A87)", role:"Team: Tartu", city:"Tartu",
+    presence:"Focused", st:"focus", circle:"Team Members", state:"circle", media:[4], story:5,
+    boardsShared:["team"], note:"You see what Priit shares with Team: Tartu.",
+    why:"You are seeing Priit because you are both members of Team: Tartu.",
+    whyData:"Used: mutual Board membership."},
+  kristjan:{name:"Kristjan", av:"K", grad:"linear-gradient(140deg,#B8A88C,#82704E)", role:"Close friend", city:"Tallinn",
+    presence:"Available", st:"", circle:"Close Friends", state:"circle", media:[10], story:null,
+    boardsShared:["personal","out"], note:"You see what Kristjan shares with his Close Friends circle.",
+    why:"You are seeing Kristjan because you are in each other's Close Friends circle.",
+    whyData:"Used: mutual Circle membership."},
+  marta:{name:"Marta V.", av:"M", grad:"linear-gradient(140deg,#C7A0D6,#9A6BB0)", role:"Creative Director", city:"Tallinn",
+    presence:"Shared recently", st:"", circle:"Creative Circle", state:"following", media:[9,16], story:2,
+    boardsShared:["creative"], note:"You see what Marta shares with her Creative Circle and her public work.",
+    why:"You are seeing Marta because you both selected AI Fashion, share 3 Creative Circle contacts, and saved similar public Moments.",
+    whyData:"Used: shared interests, mutual Circles, saved public Moments.",
+    match:"Creative Circle · AI Fashion · 3 mutual people"},
+  karl:{name:"Karl T.", av:"K", grad:"linear-gradient(140deg,#7C8DB0,#46557A)", role:"Founder · Mobility / Design", city:"Tallinn",
+    presence:"Nearby", st:"away", circle:"Business Contacts", state:"follow", media:[18], story:null,
+    boardsShared:["out"], note:"You see Karl's public work and what he shares with Going Out.",
+    why:"You are seeing Karl because you are both connected to the Business Board space, both in Tallinn, and both interested in product design.",
+    whyData:"Used: industry, city (approved), mutual Boards.",
+    match:"Business Board · Tallinn · Product Design"},
+  laura:{name:"Laura K.", av:"L", grad:"linear-gradient(140deg,#A292D6,#6F5BA8)", role:"Photographer", city:"Berlin",
+    presence:"Traveling", st:"away", circle:"Creative Circle", state:"follow", media:[13,17,19], story:null,
+    boardsShared:[], note:"You see Laura's public Apple Stories and what she approves for Creative World.",
+    why:"You are seeing Laura because you both follow Creative World, share an interest in visual culture, and saved 4 similar themes.",
+    whyData:"Used: shared interests, public Moments, saved themes.",
+    match:"Creative World · visual culture · 4 saved themes"},
+  alex:{name:"Alex R.", av:"A", grad:"linear-gradient(140deg,#9AA0AC,#5C6068)", role:"Public Apple Stories", city:"Tallinn",
+    presence:"Offline", st:"off", circle:"Public", state:"following", media:[12,14], story:null,
+    boardsShared:[], note:"You see only what Alex publishes publicly.",
+    why:"You are seeing Alex because you follow his public Apple Stories.",
+    whyData:"Used: your public follows.",
+    match:"Public Apple Stories · calm photography"},
+  anna:{name:"Anna S.", av:"A", grad:"linear-gradient(140deg,#D6A0B8,#A05B80)", role:"Art buyer · Agency", city:"Helsinki",
+    presence:"Available", st:"", circle:"Business Contacts", state:"follow", media:[3], story:null,
+    boardsShared:[], note:"You see what Anna shares with you directly.",
+    why:"You are seeing Anna because she shared media directly with you and works with brands similar to your portfolio.",
+    whyData:"Used: direct shares, your Business profile.",
+    match:"Agencies · brand work · direct share"}
+};
+
+const FOLLOW_FEED = [
+  {pid:"marta", txt:"shared 6 photos to Creative Circle", media:[16,9,6], time:"2h ago", priv:"Creative Circle"},
+  {pid:"karl", txt:"added a video to Going Out", media:[18,5], time:"Yesterday", priv:"Going Out"},
+  {pid:"laura", txt:"shared a Story with Close Friends", media:[19,17], time:"4h ago", priv:"Close Friends"},
+  {pid:"priit", txt:"Team Tartu added weekend photos", media:[4], time:"Yesterday", priv:"Team"},
+  {pid:"alex", txt:"posted a public Apple Story", media:[12,14], time:"Today", priv:"Public"}
+];
+const SHARED_WITH_ME = [
+  {pid:"anna", txt:"shared 3 photos with you", media:[3,9,13], time:"Today", priv:"Only you"},
+  {pid:"darya", txt:"Business Circle shared a project update", media:[3], time:"Today", priv:"Business"},
+  {pid:"ema", txt:"Family Board added 12 new memories", media:[2,7,11], time:"Sunday", priv:"Family"}
 ];
 
-const CIRCLES = [
-  ["Close Friends","14 people · Personal, Going Out","linear-gradient(140deg,#F0B58B,#D98C57)","☀︎"],
-  ["Family","7 people · Family Board","linear-gradient(140deg,#AECFAF,#7FA681)","♡"],
-  ["Business Contacts","27 people · Business Board","linear-gradient(140deg,#93A3C4,#5F7099)","▦"],
-  ["Creative Circle","9 people · Creative Board","linear-gradient(140deg,#C7A0D6,#9A6BB0)","✦"],
-  ["Team Members","7 people · Team: Tartu","linear-gradient(140deg,#8FC2BF,#558A87)","⌘"],
-  ["Public","Your public face · stories only","linear-gradient(140deg,#B8B8C4,#84848F)","◎"]
+const DISCOVER = {
+  "For You":["marta","laura","karl"],
+  "Creative Matches":["marta","laura"],
+  "Business Matches":["karl","anna"],
+  "Nearby":["karl","martin"],
+  "Friends of Friends":["anna","laura"],
+  "Same Industry":["marta","anna"]
+};
+
+const PUBLIC_BOARDS = [
+  {name:"AI Fashion Circle", topic:"AI image and fashion craft", members:"482 members", priv:"Public", grad:"linear-gradient(140deg,#C7A0D6,#9A6BB0)", icon:"✦", media:[16,9]},
+  {name:"Tallinn Creative Tech", topic:"Where design meets engineering", members:"1.2k members", priv:"Semi-public", grad:"linear-gradient(140deg,#93A3C4,#5F7099)", icon:"▦", media:[3,1]},
+  {name:"Tartu Weekend", topic:"Plans, places, people", members:"96 members", priv:"Request access", grad:"linear-gradient(140deg,#8FC2BF,#558A87)", icon:"⌘", media:[4]},
+  {name:"Founders in Estonia", topic:"Builders, quietly", members:"640 members", priv:"Semi-public", grad:"linear-gradient(140deg,#7C8DB0,#46557A)", icon:"◈", media:[18]},
+  {name:"AI Video Makers", topic:"Craft over noise", members:"830 members", priv:"Public", grad:"linear-gradient(140deg,#A292D6,#6F5BA8)", icon:"🎞", media:[1,6]}
 ];
 
-const PEOPLE_NEARBY = [
-  {name:"Martin", av:"M", grad:"linear-gradient(140deg,#F0B58B,#D98C57)", t:"Martin is in Tallinn tonight", s:"Close Friends · 1.2 km away",
-   circle:"Close Friends", media:[5,0,8,10], note:"You see what Martin shares with his Close Friends circle."},
-  {name:"Liis", av:"L", grad:"linear-gradient(140deg,#E8A87C,#B86A4E)", t:"Liis posted a new story", s:"Close Friends · Pirita",
-   circle:"Close Friends", media:[0,8,15], note:"You see what Liis shares with her Close Friends circle."},
-  {name:"Darya", av:"D", grad:"linear-gradient(140deg,#93A3C4,#5F7099)", t:"Darya shared set stills", s:"Business Contacts · GoEast",
-   circle:"Business Contacts", media:[3,9], note:"You see what Darya shares with Business Contacts only."}
+const SUGGESTED_CIRCLES = [
+  {name:"AI Fashion Creators", reason:"From your interests and 4 people you follow", ppl:["marta","laura"], priv:"Private circle"},
+  {name:"Tallinn Founders", reason:"From your Business Board and city", ppl:["karl","anna"], priv:"Selected people"},
+  {name:"People Going Out", reason:"Friends active in Going Out lately", ppl:["martin","kristjan","karl"], priv:"Close friends"}
 ];
+
+const BIZ_NETWORK = [
+  {pid:"karl", focus:"Mobility · Product design", avail:"Open to collaborate", mutual:"4 mutual contacts"},
+  {pid:"anna", focus:"Art buying · Brand campaigns", avail:"Looking for creative partners", mutual:"2 mutual contacts"},
+  {pid:"marta", focus:"Creative direction · AI fashion", avail:"Open to collaborate", mutual:"3 mutual contacts"}
+];
+
+const INBOX = [
+  {sec:"Messages", items:[
+    {pid:"marta", t:"Marta replied to your message", s:"“That grade direction is exactly it.”", when:"12m", unread:true, act:"chat"},
+    {pid:"martin", t:"Martin sent a Moment", s:"Old Town, before dinner · tap to view", when:"23m", unread:true, act:"story", story:0}]},
+  {sec:"Shared Moments", items:[
+    {pid:"anna", t:"Anna shared 3 photos with you", s:"From the spring campaign set", when:"2h", unread:true, act:"media", media:3}]},
+  {sec:"Board Invites", items:[
+    {pid:"karl", t:"Karl invited you to Founders in Estonia", s:"Semi-public board · 640 members", when:"1d", unread:true, act:"invite"}]},
+  {sec:"Circle Requests", items:[
+    {pid:"laura", t:"Laura asked to join your Creative Circle", s:"You follow each other in Creative World", when:"1d", unread:true, act:"request"}]},
+  {sec:"AI Summaries", items:[
+    {pid:null, t:"Your quiet daily summary", s:"2 client replies, 1 vote pending, dinner at 20:30. Nothing urgent.", when:"9:00", unread:false, act:"ai"}]}
+];
+
+const CHATS = {
+  marta:[{w:"them",x:"Saw your night drive cut — the grade in the last shot is beautiful."},
+         {w:"me",x:"Thank you! Direction B won. Your look 4 output is seriously clean."},
+         {w:"them",x:"That grade direction is exactly it."}],
+  martin:[{w:"them",x:"Pegasus at 20:30 — table is held. You in?"}],
+  darya:[{w:"them",x:"First stills land Thursday. Review call Friday still works?"}],
+  laura:[], karl:[], alex:[], anna:[{w:"them",x:"Sending three frames from the spring set — would love your eye on the light."}],
+  liis:[{w:"them",x:"Tonight was unreal. Sending you the good ones."}], ema:[], priit:[], kristjan:[]
+};
 
 const FACES = {
   friend:{note:"Previewing your profile as a Close Friend sees it",rows:[
@@ -890,7 +1264,7 @@ const FACES = {
     ["Services","Direction · AI production · grading","✎","linear-gradient(140deg,#7C8DB0,#46557A)"]],
     photos:[G.studio,G.chrome,G.nightdrive]},
   family:{note:"Previewing your profile as Family sees it",rows:[
-    ["Family photos","Sunday at grandma's · 12 new","♡","linear-gradient(140deg,#AECFAF,#7FA681)"],
+    ["Family photos","Sunday at the garden · 12 new","♡","linear-gradient(140deg,#AECFAF,#7FA681)"],
     ["Birthdays","Rasmus turns 9 · June 18","🎂","linear-gradient(140deg,#C2D8B8,#86A87E)"],
     ["Private memories","Shared with 7 people only","🖼","linear-gradient(140deg,#9DBF9E,#5F8462)"]],
     photos:[G.garden,G.cake,G.kitchen]},
@@ -901,37 +1275,75 @@ const FACES = {
     photos:[G.nightdrive,G.desert,G.chrome]}
 };
 
+const NOW_CARDS = [
+  {key:"out", t:"Martin is in Tallinn tonight", s:"Close Friends · React with Presence", icon:"☾", story:0},
+  {key:"business", t:"Your Business Board has 2 client replies", s:"Darya (GoEast) and Ray (VIP Films)", icon:"▦"},
+  {key:"personal", t:"4 photos from today are ready for a Story", s:"Auto-curated · choose who sees them", icon:"☀︎", collage:[G.golden,G.sea,G.forest,G.pirita]},
+  {key:"creative", t:"Marta shared 6 photos to Creative Circle", s:"AI fashion tests · new pipeline", icon:"✦", collage:[G.runway,G.chrome,G.desert]},
+  {key:"team", t:"Tartu Team is voting for Saturday plans", s:"5 of 7 voted · you have not yet", icon:"⌘"},
+  {key:"family", t:"Family shared 12 photos from Sunday", s:"The garden · added by Ema", icon:"♡", collage:[G.garden,G.cake,G.kitchen]}
+];
+
+const CIRCLES = [
+  ["Close Friends","14 people · Personal, Going Out","linear-gradient(140deg,#F0B58B,#D98C57)","☀︎"],
+  ["Family","7 people · Family Board","linear-gradient(140deg,#AECFAF,#7FA681)","♡"],
+  ["Business Contacts","27 people · Business Board","linear-gradient(140deg,#93A3C4,#5F7099)","▦"],
+  ["Creative Circle","9 people · Creative Board","linear-gradient(140deg,#C7A0D6,#9A6BB0)","✦"],
+  ["Team Members","7 people · Team: Tartu","linear-gradient(140deg,#8FC2BF,#558A87)","⌘"],
+  ["Public","Your public face · stories only","linear-gradient(140deg,#B8B8C4,#84848F)","◎"]
+];
+
+const INTERESTS = {
+  gen:["Creative Technology","AI Art","Fashion","Design","Music","Film","Photography","Startups","Business","Fitness","Travel","Food","Nightlife","Local Events","Family","Wellness"],
+  cre:["AI Video","AI Image","Editorial Fashion","Streetwear","Visual Culture","Music Videos","Cinematic Ads","Motion Design","Art Direction"],
+  biz:["AI Creative","Marketing","Branding","Product Design","Fashion Brands","Video Production","Advertising","Startup Founder","Investor","Agencies"]
+};
+
+const AI_HINTS={
+  Photo:"Looks like an evening photo with friends — Personal feels right.",
+  Video:"A draft cut. This belongs with your Creative work.",
+  Story:"Stories travel by circle. Choose who lives this moment with you.",
+  Update:"A short update — pick the board whose people should read it.",
+  Task:"Tasks live where the work lives.",
+  Event:"Events invite the people of a board automatically.",
+  File:"An invoice or document usually belongs in Business.",
+  Moodboard:"References and directions — Creative is the natural home.",
+  Note:"Notes stay private until you place them."
+};
+
 /* ================= HELPERS ================= */
 function el(h){const d=document.createElement('div');d.innerHTML=h.trim();return d.firstChild}
 function boardOf(key){return key==='public'
   ? {name:"Public Apple Stories",icon:"◎",grad:"linear-gradient(140deg,#B8B8C4,#84848F)"}
   : BOARDS[key]}
+function cssTint(v){return getComputedStyle(document.documentElement).getPropertyValue(v).trim()||'#999'}
+function idsFor(board){return MEDIA.map((m,i)=>m.board===board?i:-1).filter(i=>i>=0)}
 function mItem(i,opts={}){
   const m=MEDIA[i], b=boardOf(m.board);
   return `<div class="mitem ph ${opts.cls||''}" style="background:${m.g}" onclick="openMedia(${i})">
     <span class="tag" style="background:${b.grad}">${b.icon}</span>
-    ${m.video?'<span class="play">▶</span>':''}
-    ${opts.label?`<span class="ml">${m.t}</span>`:''}
-  </div>`;
+    ${m.type==='video'?'<span class="play">▶</span>':''}
+    ${opts.label?`<span class="ml">${m.t}</span>`:''}</div>`;
 }
+function statusDot(st){return `<span class="st ${st||''}"></span>`}
 
 /* ================= NOW ================= */
 function renderNow(){
   const strip=document.getElementById('heroStrip');
   STORIES.forEach((s,i)=>{
+    const p=PEOPLE[s.pid];
     strip.appendChild(el(`<div class="moment ph" style="background:${s.g}" onclick="openStory(${i})">
-      <div class="ring">${s.av}</div><div class="label">${s.title}</div></div>`));
+      <div class="ring">${p.av}</div><div class="label">${s.title}</div></div>`));
   });
   const wrap=document.getElementById('nowCards');
   NOW_CARDS.forEach(c=>{
     const b=BOARDS[c.key];
-    const open = c.story!==undefined ? `openStory(${c.story})` : `openBoard('${c.key}')`;
+    const open=c.story!==undefined?`openStory(${c.story})`:`openBoard('${c.key}')`;
     let collage='';
     if(c.collage){
       collage='<div class="collage">'+c.collage.slice(0,3).map((g,i)=>{
         const more=(i===2&&c.collage.length>3)?`<span class="more">+${c.collage.length-2}</span>`:'';
-        return `<div class="c ph" style="background:${g}">${more}</div>`;
-      }).join('')+'</div>';
+        return `<div class="c ph" style="background:${g}">${more}</div>`;}).join('')+'</div>';
     }
     wrap.appendChild(el(`<div class="card" onclick="${open}">
       <div class="row"><div class="glyph" style="background:${b.grad}">${c.icon}</div>
@@ -943,8 +1355,7 @@ function renderNow(){
 /* ================= MOMENTS ================= */
 let momentsFilter='all';
 function renderFilterbar(){
-  const fb=document.getElementById('filterbar');
-  fb.innerHTML='';
+  const fb=document.getElementById('filterbar');fb.innerHTML='';
   const chips=[['all','All','linear-gradient(140deg,#9AA0AC,#5C6068)','✺'],
     ...Object.entries(BOARDS).map(([k,b])=>[k,b.name.replace('Team: ',''),b.grad,b.icon]),
     ['public','Public','linear-gradient(140deg,#B8B8C4,#84848F)','◎']];
@@ -954,18 +1365,34 @@ function renderFilterbar(){
   });
 }
 function setFilter(k){momentsFilter=k;renderFilterbar();renderMoments()}
-function idsFor(board){return MEDIA.map((m,i)=>m.board===board?i:-1).filter(i=>i>=0)}
+
+function feedCard(f){
+  const p=PEOPLE[f.pid];
+  const media=f.media.map(i=>`<div class="fm ph" style="background:${MEDIA[i].g}" onclick="openMedia(${i})">${MEDIA[i].type==='video'?'<span class="play">▶</span>':''}</div>`).join('');
+  return `<div class="card feedcard static">
+    <div class="fhead">
+      <div class="fav" style="background:${p.grad}" onclick="openWorld('${f.pid}')">${p.av}</div>
+      <div style="min-width:0"><h4 onclick="openWorld('${f.pid}')">${p.name}</h4>
+      <p>${f.txt} · ${f.time} <span class="privchip">🔒 ${f.priv}</span></p></div>
+    </div>
+    <div class="fmedia">${media}</div>
+    <div class="actbar">
+      <button class="actbtn" onclick="openChat('${f.pid}',{reply:true})"><span class="ai">↩︎</span><span>Reply<br>Privately</span></button>
+      <button class="actbtn" onclick="openChat('${f.pid}')"><span class="ai">💬</span><span>Message</span></button>
+      <button class="actbtn" onclick="toast('Saved to Memories')"><span class="ai">🤍</span><span>Save</span></button>
+      <button class="actbtn" onclick="toast('Added to Board')"><span class="ai">▦</span><span>Add to<br>Board</span></button>
+      <button class="actbtn" onclick="toast('Presence sent')"><span class="ai">✨</span><span>Presence</span></button>
+      <button class="actbtn" onclick="openWorld('${f.pid}')"><span class="ai">◉</span><span>Their<br>World</span></button>
+    </div></div>`;
+}
 
 function renderMoments(){
   const body=document.getElementById('momentsBody');
   if(momentsFilter!=='all'){
-    const b=boardOf(momentsFilter);
-    const ids=idsFor(momentsFilter);
-    body.innerHTML=`
-      <div class="group-head" style="margin-top:18px">
-        <span class="gi" style="background:${b.grad}">${b.icon}</span><h3>${b.name}</h3>
-        <span>${ids.length} moments</span>
-      </div>
+    const b=boardOf(momentsFilter), ids=idsFor(momentsFilter);
+    body.innerHTML=`<div class="group-head" style="margin-top:18px">
+      <span class="gi" style="background:${b.grad}">${b.icon}</span><h3>${b.name}</h3>
+      <span>${ids.length} moments</span></div>
       <div class="mgrid">${ids.map(i=>mItem(i,{label:true})).join('')}</div>`;
     return;
   }
@@ -973,26 +1400,29 @@ function renderMoments(){
   body.innerHTML=`
     <div class="group-head" style="margin-top:18px"><h3>Today's Highlights</h3><span>Curated quietly</span></div>
     <div class="mhero ph" style="background:${hero.g}" onclick="openMedia(0)">
-      <div class="info"><h3>${hero.t}</h3><p>by ${hero.by} · ${boardOf(hero.board).name} · ${hero.time}</p></div>
-    </div>
-    <div class="mgrid">${[3,1].map(i=>mItem(i)).join('')}${mItem(5)}</div>
+      <div class="info"><h3>${hero.t}</h3><p>by ${hero.by} · ${boardOf(hero.board).name} · ${hero.time}</p></div></div>
+    <div class="mgrid">${[16,1].map(i=>mItem(i)).join('')}${mItem(5)}</div>
+
+    <div class="group-head"><h3>From People You Follow</h3><span>Permission-based, always</span></div>
+    ${FOLLOW_FEED.map(feedCard).join('')}
+
+    <div class="group-head"><h3>Shared With Me</h3><span>Direct to you</span></div>
+    ${SHARED_WITH_ME.map(feedCard).join('')}
 
     <div class="group-head"><h3>From My Circles</h3><span>Grouped by board</span></div>
     ${['personal','family','creative','team','out'].map(k=>{
       const b=BOARDS[k], ids=idsFor(k);
       return `<div class="group-head" style="margin-top:14px">
         <span class="gi" style="background:${b.grad}">${b.icon}</span><h3 style="font-size:14.5px">${b.name}</h3>
-        <span onclick="setFilter('${k}')" style="color:var(--blue);cursor:pointer">See all</span></div>
-        <div class="mrow">${ids.map(i=>mItem(i,{label:true})).join('')}</div>`;
-    }).join('')}
+        <span class="link" onclick="setFilter('${k}')">See all</span></div>
+        <div class="mrow">${ids.map(i=>mItem(i,{label:true})).join('')}</div>`;}).join('')}
 
     <div class="group-head"><h3>Memories</h3><span>Resurfaced for you</span></div>
     <div class="mhero ph" style="height:180px;background:${MEDIA[15].g}" onclick="openMedia(15)">
-      <div class="info"><h3>One year ago in Saaremaa</h3><p>12 photos · the weekend that started the summer</p></div>
-    </div>
+      <div class="info"><h3>One year ago in Saaremaa</h3><p>12 photos · the weekend that started the summer</p></div></div>
 
     <div class="group-head"><span class="gi" style="background:${BOARDS.creative.grad}">✦</span><h3>Creative World</h3>
-      <span onclick="setFilter('creative')" style="color:var(--blue);cursor:pointer">Open board</span></div>
+      <span class="link" onclick="setFilter('creative')">Open board</span></div>
     <div class="mgrid">${idsFor('creative').map(i=>mItem(i,{label:true})).join('')}</div>
 
     <div class="group-head"><span class="gi" style="background:linear-gradient(140deg,#B8B8C4,#84848F)">◎</span><h3>Public Apple Stories</h3>
@@ -1011,44 +1441,124 @@ function renderBoards(){
       <div class="board-foot"><div class="presence">${avs}</div>
       <span class="live"><span class="livedot"></span>${b.live}</span></div></div>`));
   });
+  const pb=document.getElementById('publicBoards');
+  PUBLIC_BOARDS.slice(0,3).forEach((p,i)=>{
+    pb.appendChild(el(publicBoardCard(p,i)));
+  });
 }
-function cssTint(v){return getComputedStyle(document.documentElement).getPropertyValue(v).trim()||'#999'}
+function publicBoardCard(p,i){
+  return `<div class="card static">
+    <div class="row"><div class="glyph" style="background:${p.grad}">${p.icon}</div>
+    <div style="min-width:0"><h3>${p.name}</h3><p>${p.topic}</p><div class="meta">${p.members} · ${p.priv}</div></div></div>
+    <div class="collage">${p.media.map(mi=>`<div class="c ph" style="background:${MEDIA[mi].g}"></div>`).join('')}</div>
+    <div class="dbtns" style="display:flex;gap:7px;margin-top:12px">
+      <button class="btn primary" onclick="toast('${p.priv==='Request access'?'Access requested':'Joined '+p.name}')">${p.priv==='Request access'?'Request Access':'Join'}</button>
+      <button class="btn soft" onclick="toast('Viewing ${p.name}')">View</button>
+    </div></div>`;
+}
 
 let currentBoard='personal';
 function openBoard(key){
   currentBoard=key;
   const b=BOARDS[key];
-  const body=document.getElementById('detailBody');
-  body.innerHTML=`
-    <div>
-      <h1 class="large">${b.icon}&ensp;${b.name}</h1>
-      <p class="subhead">${b.desc}</p>
-    </div>
-    <div class="pill-row">
-      <div class="pill on" onclick="boardTab('timeline',this)">Timeline</div>
-      <div class="pill" onclick="boardTab('media',this)">Media</div>
-      <div class="pill" onclick="toast('Stories from ${b.name}')">Stories</div>
-      <div class="pill" onclick="toast('Calendar moments')">Calendar</div>
-      <div class="pill" onclick="toast('Board people & circles')">People</div>
-    </div>
+  const pills=[['timeline','Timeline'],['stories','Stories'],['media','Media'],['calendar','Calendar'],['people','People'],['chat','Chat']];
+  if(key==='business')pills.push(['network','Network']);
+  document.getElementById('detailBody').innerHTML=`
+    <div><h1 class="large">${b.icon}&ensp;${b.name}</h1><p class="subhead">${b.desc}</p></div>
+    <div class="pill-row">${pills.map(([k,n],i)=>`<div class="pill ${i===0?'on':''}" onclick="boardTab('${k}',this)">${n}</div>`).join('')}</div>
     <div id="boardTabBody"></div>`;
   boardTabContent('timeline');
   go('detail');
 }
 function boardTab(tab,node){
   document.querySelectorAll('#detail .pill').forEach(p=>p.classList.remove('on'));
-  node.classList.add('on');
-  boardTabContent(tab);
+  node.classList.add('on');boardTabContent(tab);
 }
 function boardTabContent(tab){
   const b=BOARDS[currentBoard];
   const body=document.getElementById('boardTabBody');
   if(tab==='media'){
     const ids=idsFor(currentBoard);
-    body.innerHTML=`
-      <div class="section-label"><span>Media</span><span onclick="setFilter('${currentBoard}');go('moments')">Open in Moments</span></div>
+    body.innerHTML=`<div class="section-label"><span>Media</span><span onclick="setFilter('${currentBoard}');go('moments')">Open in Moments</span></div>
       ${ids.length?`<div class="mgrid">${ids.map(i=>mItem(i,{label:true})).join('')}</div>`
-        :`<div class="card" style="cursor:default;text-align:center;color:var(--ink-2)">No media here yet. Share something into this board.</div>`}`;
+        :`<div class="card static" style="text-align:center;color:var(--ink-2)">No media here yet. Share something into this board.</div>`}`;
+    return;
+  }
+  if(tab==='stories'){
+    const sids=STORIES.map((s,i)=>s.board===currentBoard?i:-1).filter(i=>i>=0);
+    body.innerHTML=`<div class="section-label"><span>Stories</span></div>
+      ${sids.length?`<div class="mrow" style="margin-top:4px">${sids.map(i=>{
+        const s=STORIES[i],p=PEOPLE[s.pid];
+        return `<div class="mitem ph" style="background:${s.g};border-radius:18px" onclick="openStory(${i})">
+          <span class="tag" style="background:${p.grad};border-radius:50%">${p.av}</span>
+          <span class="ml">${s.title}</span></div>`;}).join('')}</div>`
+        :`<div class="card static" style="text-align:center;color:var(--ink-2)">No stories in this board right now.</div>`}`;
+    return;
+  }
+  if(tab==='calendar'){
+    body.innerHTML=`<div class="section-label"><span>Coming up</span></div>
+      ${b.tasks.map(([t,d])=>`<div class="card" onclick="toast('Opening event')">
+        <div class="row"><div class="glyph" style="background:${b.grad}">🗓</div>
+        <div><h3>${t}</h3><p>${d}</p></div><span class="chev">›</span></div></div>`).join('')}`;
+    return;
+  }
+  if(tab==='people'){
+    const members=Object.entries(PEOPLE).filter(([id,p])=>p.boardsShared.includes(currentBoard));
+    body.innerHTML=`<div class="section-label"><span>People in this board</span></div>
+      <div class="card static" style="padding:6px 16px">
+      ${members.length?members.map(([id,p])=>`
+        <div class="prow"><div class="pav" style="background:${p.grad}" onclick="openWorld('${id}')">${p.av}</div>
+        <div style="min-width:0"><h4 onclick="openWorld('${id}')">${p.name}</h4><p>${p.presence} · ${p.circle}</p></div>
+        <div class="pacts"><button class="iconbtn" onclick="openChat('${id}')">💬</button>
+        <button class="world-btn" onclick="openWorld('${id}')">World</button></div></div>`).join('')
+      :`<p style="padding:14px 0;color:var(--ink-2);font-size:14px">Members are private in this view.</p>`}</div>`;
+    return;
+  }
+  if(tab==='chat'){
+    body.innerHTML=`<div class="section-label"><span>Board Chat</span><span onclick="toast('AI summary: everything is on track for Friday')">AI Summary</span></div>
+      <div class="pinned"><span class="pi">📌</span><span><b>Pinned decision:</b> deck due Friday, picnic if no rain.</span></div>
+      <div class="card static">
+        <div class="bchat-msg"><div class="bav" style="background:${b.grad}">${b.members[0]}</div>
+          <div class="bb"><div class="who">${currentBoard==='team'?'Priit':'Member'}</div>Venue shortlist is up — three options, all under budget.</div></div>
+        <div class="bchat-msg"><div class="bav" style="background:${b.grad}">${b.members[1]||'S'}</div>
+          <div class="bb"><div class="who">${currentBoard==='team'?'Sandra':'Member'}</div>River picnic has my vote if the weather holds.</div></div>
+        <div class="bchat-msg me"><div class="bav" style="background:linear-gradient(140deg,#7C8DB0,#4E5D7E)">A</div>
+          <div class="bb">Same. Locking my vote in now.</div></div>
+        <div style="display:flex;gap:8px;margin-top:14px">
+          <div class="cinp" style="flex:1"><input placeholder="Message the board…" onkeydown="if(event.key==='Enter'){toast('Sent to board chat');this.value=''}">
+          <button class="cibtn orb" onclick="toast('AI: I can turn this thread into tasks')"></button></div>
+        </div>
+      </div>`;
+    return;
+  }
+  if(tab==='network'){
+    body.innerHTML=`
+      <div class="section-label"><span>Business Network</span><span onclick="openPrivacy()">Discovery settings</span></div>
+      <div class="ai-strip" onclick="toast('AI: 5 fashion founders match your AI video work')">
+        <div class="ai-tag">AI SUGGESTION</div>
+        <h4>These agencies work with brands similar to your portfolio.</h4>
+        <p>Based on your approved industry and public work — tap to see them.</p></div>
+      <div class="dchips">${['Same Industry','Potential Clients','Collaborators','Local','Open to Collaborate','Hiring'].map((c,i)=>
+        `<div class="dchip ${i===0?'on':''}" onclick="this.parentNode.querySelectorAll('.dchip').forEach(x=>x.classList.remove('on'));this.classList.add('on');toast('Filter: ${c}')">${c}</div>`).join('')}</div>
+      ${BIZ_NETWORK.map(bz=>{
+        const p=PEOPLE[bz.pid];
+        return `<div class="card dcard">
+          <div class="dtop"><div class="dav" style="background:${p.grad}" onclick="openWorld('${bz.pid}')">${p.av}</div>
+          <div style="min-width:0;flex:1"><h4 onclick="openWorld('${bz.pid}')">${p.name}</h4>
+          <div class="idline">${p.role} · ${p.city}</div>
+          <div class="idline" style="margin-top:2px">${bz.focus}</div></div></div>
+          <div class="why"><span class="wi">◈</span><span>${bz.avail} · ${bz.mutual}</span>
+          <span class="qm" onclick="openWhy('${bz.pid}')">Why?</span></div>
+          <div class="dmedia">${p.media.slice(0,3).map(mi=>`<div class="dm ph" style="background:${MEDIA[mi].g}" onclick="openMedia(${mi})"></div>`).join('')}</div>
+          <div class="dbtns">
+            <button class="btn primary" onclick="openConnect('${bz.pid}')">Connect</button>
+            <button class="btn soft" onclick="openChat('${bz.pid}')">Message</button>
+            <button class="btn blue" onclick="toast('Saved to Leads')">Add to Leads</button>
+          </div>
+          <div class="dbtns" style="margin-top:7px">
+            <button class="btn soft" onclick="openWorld('${bz.pid}')">Business World</button>
+            <button class="btn soft" onclick="toast('Intro scheduled for next week')">Schedule Intro</button>
+          </div></div>`;}).join('')}`;
     return;
   }
   body.innerHTML=`
@@ -1056,67 +1566,308 @@ function boardTabContent(tab){
     <div class="ai-strip" onclick="openAI('${currentBoard}')">
       <div class="ai-tag">BOARD ASSISTANT</div>
       <h4>“${b.ai.hint}”</h4>
-      <p>Tap to ask, or let it quietly organize this board.</p>
-    </div>
+      <p>Tap to ask, or let it quietly organize this board.</p></div>
     <div class="section-label"><span>Timeline</span></div>
     ${b.timeline.map(([t,s])=>`<div class="card" onclick="toast('Saved to Memory')">
       <div class="row"><div class="glyph" style="background:${b.grad}">${b.icon}</div>
       <div><h3>${t}</h3><p>${s}</p></div><span class="chev">›</span></div></div>`).join('')}
     <div class="section-label"><span>Tasks</span></div>
-    <div class="card" style="cursor:default">${b.tasks.map(([t,d])=>`
+    <div class="card static">${b.tasks.map(([t,d])=>`
       <div class="task" onclick="this.classList.toggle('done')">
-        <div class="tick">✓</div><div class="t-name">${t}</div><div class="t-due">${d}</div></div>`).join('')}
-    </div>
+        <div class="tick">✓</div><div class="t-name">${t}</div><div class="t-due">${d}</div></div>`).join('')}</div>
     <div class="section-label"><span>Files & memories</span></div>
-    <div class="card" style="cursor:default">${b.files.map(([n,m,i])=>`
+    <div class="card static">${b.files.map(([n,m,i])=>`
       <div class="filerow"><div class="ficon">${i}</div>
-      <div><div class="fname">${n}</div><div class="fmeta">${m}</div></div></div>`).join('')}
-    </div>`;
+      <div><div class="fname">${n}</div><div class="fmeta">${m}</div></div></div>`).join('')}</div>`;
 }
 
-/* ================= PEOPLE ================= */
+/* ================= PEOPLE TAB ================= */
 function renderPeople(){
-  const list=document.getElementById('circleList');
-  CIRCLES.forEach(([n,s,g,i])=>{
-    list.appendChild(el(`<div class="circle-row" onclick="toast('Managing ${n}')">
-      <div class="circle-glyph" style="background:${g}">${i}</div>
-      <div><h3>${n}</h3><p>${s}</p></div><span class="chev">›</span></div>`));
-  });
-  const nb=document.getElementById('nearby');
-  PEOPLE_NEARBY.forEach((p,i)=>{
-    nb.appendChild(el(`<div class="card" onclick="openWorld(${i})">
-      <div class="row">
-        <div class="glyph" style="background:${p.grad};border-radius:50%">${p.av}</div>
-        <div style="min-width:0"><h3>${p.t}</h3><p>${p.s}</p></div>
-        <span class="world-btn">View Their World</span>
-      </div></div>`));
-  });
-}
-function openWorld(i){
-  const p=PEOPLE_NEARBY[i];
-  const body=document.getElementById('worldBody');
+  const body=document.getElementById('peopleBody');
+  const active=['martin','liis','kristjan','marta','darya','priit'];
   body.innerHTML=`
+    <div class="section-label"><span>Active Now</span><span onclick="toast('Presence is always opt-in')">Presence</span></div>
+    <div class="activerow">${active.map(id=>{
+      const p=PEOPLE[id];
+      return `<div class="activep" onclick="openWorld('${id}')">
+        <div class="aav" style="background:${p.grad}">${p.av}${statusDot(p.st)}</div>
+        <h5>${p.name.split(' ')[0]}</h5><p>${p.presence}</p></div>`;}).join('')}</div>
+
+    <div class="ai-strip" style="margin-top:20px" onclick="openFind()">
+      <div class="ai-tag">DISCOVERY ASSISTANT</div>
+      <h4>Find people for me</h4>
+      <p>Ask in plain words — every match explains itself.</p></div>
+
+    <div class="section-label"><span>Your Circles</span><span onclick="toast('Circles are private to you')">Manage</span></div>
+    <div class="card static" style="padding:6px 16px">${CIRCLES.map(([n,s,g,i])=>`
+      <div class="circle-row" onclick="toast('Managing ${n}')">
+        <div class="circle-glyph" style="background:${g}">${i}</div>
+        <div><h3>${n}</h3><p>${s}</p></div><span class="chev">›</span></div>`).join('')}</div>
+
+    <div class="section-label"><span>Following</span><span onclick="setFilter('all');go('moments')">Their Moments</span></div>
+    <div class="card static" style="padding:6px 16px">${['marta','laura','alex','karl'].map(id=>{
+      const p=PEOPLE[id];
+      return `<div class="prow">
+        <div class="pav" style="background:${p.grad}" onclick="openWorld('${id}')">${p.av}</div>
+        <div style="min-width:0"><h4 onclick="openWorld('${id}')">${p.name}</h4><p>${p.presence} · ${p.role}</p>
+        <div class="thumbs">${p.media.slice(0,3).map(mi=>`<div class="th ph" style="background:${MEDIA[mi].g}" onclick="openMedia(${mi})"></div>`).join('')}</div></div>
+        <div class="pacts"><button class="iconbtn" onclick="openChat('${id}')">💬</button>
+        <button class="world-btn" onclick="openWorld('${id}')">World</button></div></div>`;}).join('')}</div>
+
+    <div class="section-label"><span>Discover People</span><span onclick="openPrivacy()">Why these?</span></div>
+    <div class="dchips" id="dchips">${Object.keys(DISCOVER).map((c,i)=>
+      `<div class="dchip ${i===0?'on':''}" onclick="setDiscover('${c}',this)">${c}</div>`).join('')}</div>
+    <div id="discoverCards"></div>
+
+    <div class="section-label"><span>Public Boards</span></div>
+    ${PUBLIC_BOARDS.slice(0,3).map(publicBoardCard).join('')}
+
+    <div class="section-label"><span>Suggested Circles</span></div>
+    ${SUGGESTED_CIRCLES.map(sc=>`<div class="card static">
+      <div class="row"><div class="glyph" style="background:linear-gradient(140deg,#9AA0AC,#5C6068)">◌</div>
+      <div style="min-width:0"><h3>${sc.name}</h3><p>${sc.reason}</p><div class="meta">${sc.priv}</div></div>
+      <div class="presence">${sc.ppl.map((id,i)=>`<span class="av pdot" style="background:${PEOPLE[id].grad};z-index:${9-i}">${PEOPLE[id].av}</span>`).join('')}</div></div>
+      <div class="dbtns" style="margin-top:12px">
+        <button class="btn primary" onclick="toast('Circle created: ${sc.name}')">Create Circle</button>
+        <button class="btn soft" onclick="toast('Choose people to add')">Add People</button></div></div>`).join('')}
+
+    <p style="font-size:12px;color:var(--ink-3);text-align:center;margin:18px 0 4px;line-height:1.5">
+      Discovery is not about chasing followers.<br>It is about the right people for the right part of your life.<br>
+      <span style="color:var(--blue);cursor:pointer" onclick="openPrivacy()">Discovery Controls</span></p>`;
+  setDiscover('For You',document.querySelector('#dchips .dchip'));
+}
+function setDiscover(cat,node){
+  if(node){document.querySelectorAll('#dchips .dchip').forEach(c=>c.classList.remove('on'));node.classList.add('on');}
+  const wrap=document.getElementById('discoverCards');
+  wrap.innerHTML=DISCOVER[cat].map(id=>dCard(id)).join('');
+}
+function dCard(id){
+  const p=PEOPLE[id];
+  const followBtn=p.state==='following'?`<button class="btn done" onclick="cycleFollow('${id}',this)">Following</button>`
+    :p.state==='requested'?`<button class="btn soft" onclick="toast('Request pending')">Requested</button>`
+    :p.state==='connected'?`<button class="btn done" onclick="toast('Connected')">Connected</button>`
+    :p.state==='circle'?`<button class="btn done" onclick="toast('In your Circle')">In Circle</button>`
+    :`<button class="btn primary" onclick="cycleFollow('${id}',this)">Follow</button>`;
+  return `<div class="card dcard">
+    <div class="dtop"><div class="dav" style="background:${p.grad}" onclick="openWorld('${id}')">${p.av}</div>
+    <div style="min-width:0;flex:1"><h4 onclick="openWorld('${id}')">${p.name}</h4>
+    <div class="idline">${p.role} · ${p.city}</div></div></div>
+    <div class="why"><span class="wi">✺</span><span>Matched through: ${p.match||p.circle}</span>
+    <span class="qm" onclick="openWhy('${id}')">Why?</span></div>
+    <div class="dmedia">${p.media.slice(0,3).map(mi=>`<div class="dm ph" style="background:${MEDIA[mi].g}" onclick="openMedia(${mi})"></div>`).join('')}</div>
+    <div class="dbtns">${followBtn}
+      <button class="btn soft" onclick="openWorld('${id}')">View World</button>
+      <button class="btn blue" onclick="openChat('${id}')">Message</button></div></div>`;
+}
+function cycleFollow(id,btn){
+  const p=PEOPLE[id];
+  if(p.state==='follow'){p.state='following';btn.className='btn done';btn.textContent='Following';
+    toast('Following '+p.name.split(' ')[0]+' — public and approved content only');}
+  else{p.state='follow';btn.className='btn primary';btn.textContent='Follow';toast('Unfollowed');}
+}
+
+/* search */
+function onSearch(q){
+  const res=document.getElementById('searchResults'), body=document.getElementById('peopleBody');
+  q=q.trim().toLowerCase();
+  if(!q){res.style.display='none';body.style.display='block';return}
+  body.style.display='none';res.style.display='block';
+  const ppl=Object.entries(PEOPLE).filter(([id,p])=>
+    (p.name+' '+p.role+' '+p.city+' '+(p.match||'')).toLowerCase().includes(q));
+  const boards=PUBLIC_BOARDS.filter(b=>(b.name+' '+b.topic).toLowerCase().includes(q));
+  res.innerHTML=`
+    ${ppl.length?`<div class="section-label"><span>People</span></div>
+      <div class="card static" style="padding:6px 16px">${ppl.map(([id,p])=>`
+        <div class="prow"><div class="pav" style="background:${p.grad}" onclick="openWorld('${id}')">${p.av}</div>
+        <div style="min-width:0"><h4 onclick="openWorld('${id}')">${p.name}</h4><p>${p.role} · ${p.city}</p></div>
+        <div class="pacts"><button class="iconbtn" onclick="openChat('${id}')">💬</button>
+        <button class="world-btn" onclick="openWorld('${id}')">World</button></div></div>`).join('')}</div>`:''}
+    ${boards.length?`<div class="section-label"><span>Public Boards</span></div>${boards.map(publicBoardCard).join('')}`:''}
+    ${!ppl.length&&!boards.length?`<div class="card static" style="text-align:center;color:var(--ink-2);margin-top:16px">
+      No matches in your world yet.<br><span style="font-size:13px">Try an interest, a city, or a board name.</span></div>`:''}`;
+}
+
+/* ================= THEIR WORLD ================= */
+let currentWorld='marta', worldTabState='All';
+function openWorld(id){
+  currentWorld=id;worldTabState='All';paintWorld();go('world');
+}
+function paintWorld(){
+  const id=currentWorld, p=PEOPLE[id];
+  const tabs=['All','Stories','Photos','Videos','Boards','Public'];
+  const followBtn=p.state==='following'?`<div class="wact main" onclick="cycleFollowWorld()"><span class="wi">✓</span><span>Following</span></div>`
+    :p.state==='requested'?`<div class="wact" onclick="toast('Request pending')"><span class="wi">…</span><span>Requested</span></div>`
+    :p.state==='connected'||p.state==='circle'?`<div class="wact main" onclick="toast('${p.state==='circle'?'In your Circle':'Connected'}')"><span class="wi">✓</span><span>${p.state==='circle'?'In Circle':'Connected'}</span></div>`
+    :`<div class="wact main" onclick="cycleFollowWorld()"><span class="wi">＋</span><span>Follow</span></div>`;
+  let content='';
+  if(worldTabState==='Boards'){
+    content=p.boardsShared.length?p.boardsShared.map(k=>{
+      const b=BOARDS[k];
+      return `<div class="card" onclick="openBoard('${k}')">
+        <div class="row"><div class="glyph" style="background:${b.grad}">${b.icon}</div>
+        <div><h3>${b.name}</h3><p>Shared with you</p></div><span class="chev">›</span></div></div>`;}).join('')
+      :`<div class="card static" style="text-align:center;color:var(--ink-2)">No boards shared with you yet.</div>`;
+  }else if(worldTabState==='Stories'){
+    content=p.story!==null&&p.story!==undefined?`<div class="mrow" style="margin-top:6px">
+      <div class="mitem ph" style="background:${STORIES[p.story].g};border-radius:18px" onclick="openStory(${p.story})">
+      <span class="tag" style="background:${p.grad};border-radius:50%">${p.av}</span>
+      <span class="ml">${STORIES[p.story].title}</span></div></div>`
+      :`<div class="card static" style="text-align:center;color:var(--ink-2)">No stories shared with you right now.</div>`;
+  }else{
+    let ids=p.media;
+    if(worldTabState==='Photos')ids=ids.filter(i=>MEDIA[i].type==='photo');
+    if(worldTabState==='Videos')ids=ids.filter(i=>MEDIA[i].type==='video');
+    if(worldTabState==='Public')ids=ids.filter(i=>MEDIA[i].board==='public');
+    content=ids.length?`<div class="mgrid">${ids.map(i=>mItem(i,{label:true})).join('')}</div>`
+      :`<div class="card static" style="text-align:center;color:var(--ink-2)">Nothing here that ${p.name.split(' ')[0]} shares with you.</div>`;
+  }
+  document.getElementById('worldBody').innerHTML=`
     <div class="world-head">
-      <div class="wav" style="background:${p.grad}">${p.av}</div>
-      <div>
-        <h1 class="large" style="font-size:28px">${p.name}'s World</h1>
-        <p class="subhead" style="margin-top:2px">${p.circle} · ${p.media.length} shared moments</p>
-      </div>
+      <div class="wav" style="background:${p.grad}">${p.av}${statusDot(p.st)}</div>
+      <div style="min-width:0">
+        <h1 class="large" style="font-size:27px">${p.name}</h1>
+        <p class="subhead" style="margin-top:2px">${p.presence} · ${p.role} · ${p.city}</p>
+      </div></div>
+    <div class="wmeta">
+      <span class="wtag"><span class="ti" style="background:${p.grad}">◌</span>${p.circle}</span>
+      ${p.boardsShared.map(k=>`<span class="wtag"><span class="ti" style="background:${BOARDS[k].grad}">${BOARDS[k].icon}</span>${BOARDS[k].name}</span>`).join('')}
+      <span class="wtag" onclick="openWhy('${id}')" style="cursor:pointer;color:var(--blue)">Why am I seeing this?</span>
+    </div>
+    <div class="wacts">
+      ${followBtn}
+      <div class="wact" onclick="openChat('${id}')"><span class="wi">💬</span><span>Message</span></div>
+      <div class="wact" onclick="toast('FaceTime starting…')"><span class="wi">◉</span><span>FaceTime</span></div>
+      <div class="wact" onclick="toast('Choose a board for ${p.name.split(' ')[0]}')"><span class="wi">▦</span><span>Add to Board</span></div>
+      <div class="wact" onclick="openConnect('${id}')"><span class="wi">◌</span><span>Join Circle</span></div>
     </div>
     <div class="perm-note">
       <svg width="13" height="15" viewBox="0 0 11 13" fill="currentColor" style="flex:none;opacity:.7"><path d="M5.5 0C4 0 2.8 1.2 2.8 2.7v1.6H2c-.9 0-1.6.7-1.6 1.6v5c0 .9.7 1.6 1.6 1.6h7c.9 0 1.6-.7 1.6-1.6v-5c0-.9-.7-1.6-1.6-1.6h-.8V2.7C8.2 1.2 7 0 5.5 0Zm0 1.3c.8 0 1.4.6 1.4 1.4v1.6H4.1V2.7c0-.8.6-1.4 1.4-1.4Z"/></svg>
       ${p.note} Everything else stays private.
     </div>
-    <div class="section-label"><span>Shared with you</span></div>
-    <div class="mgrid">${p.media.map(id=>mItem(id,{label:true})).join('')}</div>
-    <div class="section-label"><span>Quiet actions</span></div>
-    <div class="card" onclick="toast('Moment sent to ${p.name}')">
-      <div class="row"><div class="glyph" style="background:${p.grad}">✈︎</div>
-      <div><h3>Send a Moment</h3><p>A photo or thought, just for ${p.name}</p></div><span class="chev">›</span></div></div>
-    <div class="card" onclick="toast('Presence shared with ${p.name}')">
-      <div class="row"><div class="glyph" style="background:linear-gradient(140deg,#A292D6,#6F5BA8)">✨</div>
-      <div><h3>React with Presence</h3><p>Let them feel you're around tonight</p></div><span class="chev">›</span></div></div>`;
-  go('world');
+    <div class="ftabs">${tabs.map(t=>`<div class="pill ${t===worldTabState?'on':''}" onclick="worldTab('${t}')">${t}</div>`).join('')}</div>
+    ${content}
+    <div class="locked">
+      <div class="lk"><svg width="17" height="20" viewBox="0 0 11 13" fill="currentColor" opacity=".55"><path d="M5.5 0C4 0 2.8 1.2 2.8 2.7v1.6H2c-.9 0-1.6.7-1.6 1.6v5c0 .9.7 1.6 1.6 1.6h7c.9 0 1.6-.7 1.6-1.6v-5c0-.9-.7-1.6-1.6-1.6h-.8V2.7C8.2 1.2 7 0 5.5 0Zm0 1.3c.8 0 1.4.6 1.4 1.4v1.6H4.1V2.7c0-.8.6-1.4 1.4-1.4Z"/></svg></div>
+      <h4>This part of ${p.name.split(' ')[0]}&rsquo;s World is private.</h4>
+      <p>Following gives access only to what they choose to share.</p>
+      <button onclick="openConnect('${id}')">Ask to Join Circle</button>
+    </div>`;
+}
+function worldTab(t){worldTabState=t;paintWorld()}
+function cycleFollowWorld(){
+  const p=PEOPLE[currentWorld];
+  p.state=p.state==='following'?'follow':'following';
+  toast(p.state==='following'?'Following '+p.name.split(' ')[0]:'Unfollowed');
+  paintWorld();
+}
+
+/* ================= CHAT ================= */
+let currentChat='marta';
+function openChat(id,opts={}){
+  currentChat=id;
+  const p=PEOPLE[id];
+  document.getElementById('chHeadAv').textContent=p.av;
+  document.getElementById('chHeadAv').style.background=p.grad;
+  document.getElementById('chName').textContent=p.name;
+  document.getElementById('chCtx').innerHTML=`Shared in ${p.circle}${p.boardsShared.length?` · ${p.boardsShared.length} mutual board${p.boardsShared.length>1?'s':''}`:''}`;
+  document.getElementById('chChips').innerHTML=
+    p.boardsShared.map(k=>`<span class="wtag" onclick="openBoard('${k}')" style="cursor:pointer"><span class="ti" style="background:${BOARDS[k].grad}">${BOARDS[k].icon}</span>${BOARDS[k].name}</span>`).join('')+
+    `<span class="wtag" onclick="toast('Moment picker opening…')" style="cursor:pointer">✈︎ Send Moment</span>`;
+  const body=document.getElementById('chBody');
+  const msgs=CHATS[id]||[];
+  let html='';
+  if(opts.story!==undefined){
+    const s=STORIES[opts.story];
+    html+=`<div class="replyctx"><div class="rth ph" style="background:${s.g}"></div>
+      <span>Replying to ${p.name.split(' ')[0]}&rsquo;s Story · ${s.title}</span></div>`;
+  }else if(opts.media!==undefined){
+    const m=MEDIA[opts.media];
+    html+=`<div class="replyctx"><div class="rth ph" style="background:${m.g}"></div>
+      <span>Replying to a Moment · ${m.t}</span></div>`;
+  }else if(opts.reply){
+    html+=`<div class="replyctx"><div class="rth ph" style="background:${MEDIA[p.media[0]].g}"></div>
+      <span>Replying privately to ${p.name.split(' ')[0]}&rsquo;s shared moments</span></div>`;
+  }
+  if(msgs.length){
+    html+=`<div class="chat-day">Today</div>`+msgs.map(m=>`<div class="bub ${m.w}">${m.x}</div>`).join('');
+  }else if(!opts.story&&!opts.media&&!opts.reply){
+    html+=`<div class="chat-empty"><div class="ce">💬</div>
+      <h4>Start a private conversation.</h4>
+      <p>Shared moments, plans, and Boards can live here.</p></div>`;
+  }
+  body.innerHTML=html;
+  go('chat');
+  setTimeout(()=>{body.scrollTop=body.scrollHeight},80);
+  setTimeout(()=>document.getElementById('chInput').focus(),350);
+}
+function closeChat(){go('people')}
+function openWorldFromChat(){openWorld(currentChat)}
+function sendMsg(){
+  const inp=document.getElementById('chInput');
+  const txt=inp.value.trim();if(!txt)return;
+  inp.value='';
+  const body=document.getElementById('chBody');
+  const empty=body.querySelector('.chat-empty');if(empty)empty.remove();
+  body.insertAdjacentHTML('beforeend',`<div class="bub me">${txt.replace(/</g,'&lt;')}</div><div class="delivered">Delivered</div>`);
+  body.scrollTop=body.scrollHeight;
+  (CHATS[currentChat]=CHATS[currentChat]||[]).push({w:'me',x:txt});
+  const p=PEOPLE[currentChat];
+  setTimeout(()=>{
+    const replies=["Love that.","Yes — let's do it.","Perfect, talk soon.","Agreed. Sending mine in a bit."];
+    const r=replies[Math.floor(Math.random()*replies.length)];
+    document.querySelectorAll('#chBody .delivered').forEach(d=>d.remove());
+    body.insertAdjacentHTML('beforeend',`<div class="bub them">${r}</div>`);
+    body.scrollTop=body.scrollHeight;
+    CHATS[currentChat].push({w:'them',x:r});
+  },1300);
+}
+function openChatAI(){
+  const p=PEOPLE[currentChat];
+  openAct('Chat Assistant','Quiet help, only when you ask.',[
+    ['✺','Summarize this chat',()=>{closeSheets();const body=document.getElementById('chBody');
+      body.insertAdjacentHTML('beforeend',`<div class="bub aib"><div class="ailabel">AI SUMMARY · PRIVATE TO YOU</div>You and ${p.name.split(' ')[0]} aligned on the creative direction. No open questions. One warm thread worth keeping alive.</div>`);
+      body.scrollTop=body.scrollHeight;}],
+    ['✎','Draft a clean reply',()=>{closeSheets();document.getElementById('chInput').value='That works perfectly — let me send you the frames tonight.';document.getElementById('chInput').focus();}],
+    ['☑︎','Turn this into a plan',()=>{closeSheets();toast('Plan created in your board')}],
+    ['🗓','Create calendar event',()=>{closeSheets();toast('Event drafted for Friday')}],
+    ['🖼','Find shared photos',()=>{closeSheets();toast('4 shared photos found')}],
+    ['▦','Add this to Business Board',()=>{closeSheets();toast('Saved to Business Board')}]
+  ]);
+}
+function openChatPlus(){
+  openAct('Add to conversation','',[
+    ['✈︎','Send a Moment',()=>{closeSheets();toast('Moment picker opening…')}],
+    ['🖼','Send photo or video',()=>{closeSheets();toast('Media picker opening…')}],
+    ['▦','Share a Board',()=>{closeSheets();toast('Choose a board to share')}],
+    ['☾','Add to Plan',()=>{closeSheets();toast('Added to tonight')}],
+    ['☑︎','Create task from message',()=>{closeSheets();toast('Task created')}]
+  ]);
+}
+
+/* ================= INBOX ================= */
+function renderInbox(){
+  const body=document.getElementById('inboxBody');
+  body.innerHTML=INBOX.map(sec=>`
+    <div class="section-label"><span>${sec.sec}</span></div>
+    <div class="card static" style="padding:4px 16px">${sec.items.map(it=>{
+      const p=it.pid?PEOPLE[it.pid]:null;
+      const av=p?`<div class="iav" style="background:${p.grad}">${p.av}</div>`
+        :`<div class="iav" style="background:conic-gradient(from 200deg,#FF9F6E,#C77DDE,#5AB0FF,#6EE7C7,#FF9F6E)"></div>`;
+      const click=it.act==='chat'?`openChat('${it.pid}')`
+        :it.act==='story'?`openStory(${it.story})`
+        :it.act==='media'?`openMedia(${it.media})`
+        :it.act==='ai'?`toast('Nothing urgent today')`
+        :``;
+      const btns=it.act==='invite'?`<div class="inbtns">
+          <button class="btn primary" onclick="event.stopPropagation();toast('Joined Founders in Estonia')">Accept</button>
+          <button class="btn soft" onclick="event.stopPropagation();toast('Invite declined quietly')">Decline</button></div>`
+        :it.act==='request'?`<div class="inbtns">
+          <button class="btn primary" onclick="event.stopPropagation();toast('Laura added to Creative Circle')">Add to Circle</button>
+          <button class="btn soft" onclick="event.stopPropagation();toast('Request declined quietly')">Not now</button></div>`:'';
+      return `<div class="inbrow" onclick="${click}">
+        ${it.unread?'<span class="dot"></span>':'<span style="width:8px;flex:none"></span>'}
+        ${av}<div style="min-width:0;flex:1"><h4>${it.t}</h4><p>${it.s}</p>${btns}</div>
+        <span class="when">${it.when}</span></div>`;}).join('')}</div>`).join('');
 }
 
 /* ================= PROFILE ================= */
@@ -1127,33 +1878,20 @@ function setFace(key,btn){
   document.getElementById('viewNote').textContent=f.note;
   document.getElementById('faceBody').innerHTML=`
     <div class="photo-grid">${f.photos.map((p,i)=>`
-      <div class="photo ph" style="background:${p}"><span class="pl">${['Today','This week','Memory'][i]}</span></div>`).join('')}
-    </div>
+      <div class="photo ph" style="background:${p}"><span class="pl">${['Today','This week','Memory'][i]}</span></div>`).join('')}</div>
     ${f.rows.map(([t,s,i,g])=>`<div class="card" onclick="toast('Opening ${t}')">
       <div class="row"><div class="glyph" style="background:${g}">${i}</div>
       <div><h3>${t}</h3><p>${s}</p></div><span class="chev">›</span></div></div>`).join('')}`;
 }
 
-/* ================= CREATE FLOW ================= */
+/* ================= CREATE ================= */
 let createType='Photo', selectedDest='personal';
-const AI_HINTS={
-  Photo:"Looks like an evening photo with friends — Personal feels right.",
-  Video:"A draft cut. This belongs with your Creative work.",
-  Story:"Stories travel by circle. Choose who lives this moment with you.",
-  Update:"A short update — pick the board whose people should read it.",
-  Task:"Tasks live where the work lives.",
-  Event:"Events invite a board's people automatically.",
-  File:"An invoice or document usually belongs in Business.",
-  Moodboard:"References and directions — Creative is the natural home.",
-  Note:"Notes stay private until you place them."
-};
 function toStep2(type){
   createType=type;
   document.getElementById('createStep1').style.display='none';
   document.getElementById('createStep2').style.display='block';
   document.getElementById('aiPlaceHint').textContent=AI_HINTS[type];
-  const dl=document.getElementById('destList');
-  dl.innerHTML='';
+  const dl=document.getElementById('destList');dl.innerHTML='';
   const suggest={Photo:'personal',Video:'creative',Story:'personal',Update:'business',Task:'team',Event:'out',File:'business',Moodboard:'creative',Note:'personal'}[type];
   selectedDest=suggest;
   Object.entries(BOARDS).forEach(([key,b])=>{
@@ -1171,9 +1909,7 @@ function pickDest(node){
   document.querySelectorAll('.dest').forEach(d=>d.classList.remove('on'));
   node.classList.add('on');selectedDest=node.dataset.k;
 }
-function setPv(node){
-  document.querySelectorAll('.pv').forEach(p=>p.classList.remove('on'));node.classList.add('on');
-}
+function setPv(node){document.querySelectorAll('#pvRow .pv').forEach(p=>p.classList.remove('on'));node.classList.add('on')}
 function backToStep1(){
   document.getElementById('createStep2').style.display='none';
   document.getElementById('createStep1').style.display='block';
@@ -1185,7 +1921,7 @@ function share(){
   setTimeout(backToStep1,600);
 }
 
-/* ================= AI SHEET ================= */
+/* ================= AI BOARD SHEET ================= */
 function openAI(key){
   const b=BOARDS[key];
   document.getElementById('aiTitle').textContent=b.name+' Assistant';
@@ -1193,10 +1929,98 @@ function openAI(key){
   document.getElementById('aiBubble').textContent=b.ai.bubble;
   const s=document.getElementById('aiSugs');s.innerHTML='';
   b.ai.sugs.forEach(t=>{
-    s.appendChild(el(`<button onclick="closeSheets();setTimeout(()=>toast('Done — ${t.replace(/'/g,'')}'),250)">${t}</button>`));
+    const btn=document.createElement('button');
+    btn.textContent=t;
+    btn.onclick=()=>{closeSheets();setTimeout(()=>toast('Done — '+t),250)};
+    s.appendChild(btn);
   });
-  document.getElementById('scrim').classList.add('open');
-  document.getElementById('aiSheet').classList.add('open');
+  openSheet('aiSheet');
+}
+
+/* ================= GENERIC ACTION SHEET ================= */
+function openAct(title,sub,btns){
+  document.getElementById('actTitle').textContent=title;
+  document.getElementById('actSub').textContent=sub;
+  const wrap=document.getElementById('actBtns');wrap.innerHTML='';
+  btns.forEach(([icon,label,fn,danger])=>{
+    const b=document.createElement('button');
+    b.className='actsheet-btn'+(danger?' danger':'');
+    b.innerHTML=`<span class="ai">${icon}</span>${label}`;
+    b.onclick=fn;wrap.appendChild(b);
+  });
+  openSheet('actSheet');
+}
+
+/* ================= CONNECT FLOW ================= */
+let connectTarget='marta';
+function openConnect(id){
+  connectTarget=id;
+  const p=PEOPLE[id];
+  document.getElementById('cnTitle').textContent='Connect with '+p.name.split(' ')[0];
+  document.getElementById('cnNote').value='';
+  const fill=(elId,items,onIdx)=>{
+    document.getElementById(elId).innerHTML=items.map((t,i)=>
+      `<div class="pv ${i===onIdx?'on':''}" onclick="this.parentNode.querySelectorAll('.pv').forEach(x=>x.classList.remove('on'));this.classList.add('on')">${t}</div>`).join('');
+  };
+  fill('cnType',['Personal','Creative','Business','Family','Team','Public Follow'],1);
+  fill('cnCircle',['Close Friends','Creative Circle','Business Contacts','Family','Team Members','New Circle'],1);
+  fill('cnSee',['Public World only','Creative World','Business World','Selected Board','Custom'],0);
+  openSheet('connectSheet');
+}
+function sendConnect(){
+  const p=PEOPLE[connectTarget];
+  p.state='requested';
+  closeSheets();
+  setTimeout(()=>toast('Request sent to '+p.name.split(' ')[0]+' — they choose what you see'),250);
+  if(document.getElementById('world').classList.contains('active'))paintWorld();
+}
+
+/* ================= WHY SHEET ================= */
+function openWhy(id){
+  const p=PEOPLE[id];
+  document.getElementById('whyBubble').textContent=p.why;
+  document.getElementById('whyData').textContent=p.whyData+' Nothing else. Location and industry are used only with your approval.';
+  document.getElementById('whyActs').innerHTML='';
+  [['◌','Hide suggestions like this',()=>{closeSheets();toast('You will see fewer like this')}],
+   ['✕','Do not suggest '+p.name.split(' ')[0]+' again',()=>{closeSheets();toast('Understood — removed from discovery')}]]
+   .forEach(([icon,label,fn])=>{
+     const b=document.createElement('button');b.className='actsheet-btn';
+     b.innerHTML=`<span class="ai">${icon}</span>${label}`;b.onclick=fn;
+     document.getElementById('whyActs').appendChild(b);
+   });
+  openSheet('whySheet');
+}
+
+/* ================= PRIVACY SHEET ================= */
+function openPrivacy(){
+  const who=['Discoverable by everyone','Friends of friends','Industry only','Selected Circles','Hidden from discovery'];
+  document.getElementById('pcWho').innerHTML=who.map((w,i)=>`
+    <div class="dest ${i===1?'on':''}" onclick="this.parentNode.querySelectorAll('.dest').forEach(x=>x.classList.remove('on'));this.classList.add('on')">
+      <div><h4 style="font-size:14.5px">${w}</h4></div><div class="radio"></div></div>`).join('');
+  const use=['Interests','City','Industry','Public Moments','Mutual contacts','Boards','Portfolio'];
+  document.getElementById('pcUse').innerHTML=use.map((u,i)=>`
+    <div class="pv ${i<4?'on':''}" onclick="this.classList.toggle('on')">${u}</div>`).join('');
+  openSheet('privacySheet');
+}
+
+/* ================= FIND PEOPLE (AI) ================= */
+function openFind(){
+  const prompts=["Find AI video creators in Europe","Find fashion brand founders","Find people in Tallinn going out this weekend","Find potential clients for my Business Board","Find collaborators for a creative project"];
+  const fp=document.getElementById('findPrompts');fp.innerHTML='';
+  prompts.forEach(t=>{
+    const b=document.createElement('button');b.textContent='“'+t+'”';
+    b.onclick=()=>runFind(t);fp.appendChild(b);
+  });
+  document.getElementById('findResult').innerHTML='';
+  document.getElementById('findData').textContent='';
+  openSheet('findSheet');
+}
+function runFind(q){
+  const picks=q.includes('client')?['anna','karl']:q.includes('fashion')?['marta','anna']:q.includes('going out')?['martin','karl']:['marta','laura'];
+  document.getElementById('findResult').innerHTML=
+    `<div class="ai-msg"><div class="ai-orb"></div><div class="ai-bubble">Three quiet matches. Each one is here for a reason you can check.</div></div>
+     <div style="margin-top:14px">${picks.map(dCard).join('')}</div>`;
+  document.getElementById('findData').textContent='Used: your interests, mutual Circles, public Moments, and your approved city and industry. Nothing else.';
 }
 
 /* ================= STORY VIEWER ================= */
@@ -1207,25 +2031,25 @@ function openStory(i){
   document.getElementById('statusbar').classList.add('invert');
   paintStory(true);
 }
-function paintStory(first){
-  const s=STORIES[storyIdx], b=boardOf(s.board);
+function paintStory(){
+  const s=STORIES[storyIdx], p=PEOPLE[s.pid], b=boardOf(s.board);
   const media=document.getElementById('svMedia');
   media.style.background=s.g;
   document.getElementById('svBg').style.background=s.g;
   document.getElementById('svCapTitle').textContent=s.title;
   document.getElementById('svCapSub').textContent=s.sub;
-  document.getElementById('svAv').textContent=s.av;
-  document.getElementById('svAv').style.background=b.grad;
-  document.getElementById('svName').textContent=s.name;
-  document.getElementById('svCtx').innerHTML=`<span class="bicon" style="background:${b.grad}">${b.icon}</span>${b.name} · ${s.time}`;
-  const prog=document.getElementById('svProgress');
-  prog.innerHTML=STORIES.map((_,j)=>`<div class="seg-bar ${j<storyIdx?'done':j===storyIdx?'now':''}"><i></i></div>`).join('');
+  document.getElementById('svAv').textContent=p.av;
+  document.getElementById('svAv').style.background=p.grad;
+  document.getElementById('svName').textContent=p.name;
+  document.getElementById('svCtx').innerHTML=`<span class="bicon" style="background:${b.grad}">${b.icon}</span>${b.name} · ${s.time} <span class="pchip">🔒 ${s.priv}</span>`;
+  document.getElementById('svProgress').innerHTML=
+    STORIES.map((_,j)=>`<div class="seg-bar ${j<storyIdx?'done':j===storyIdx?'now':''}"><i></i></div>`).join('');
   clearTimeout(storyTimer);
   storyTimer=setTimeout(()=>advanceStory(1),6000);
 }
 function advanceStory(dir){
   const next=storyIdx+dir;
-  if(next<0) return;
+  if(next<0)return;
   if(next>=STORIES.length){closeStory();return}
   const media=document.getElementById('svMedia');
   media.classList.add(dir>0?'slide-up':'slide-down');
@@ -1241,12 +2065,23 @@ function closeStory(){
   document.getElementById('storyview').classList.remove('open');
   document.getElementById('statusbar').classList.remove('invert');
 }
-function storyAct(msg){
-  clearTimeout(storyTimer);
-  toast(msg);
-  storyTimer=setTimeout(()=>advanceStory(1),3500);
+function storyAct(msg){clearTimeout(storyTimer);toast(msg);storyTimer=setTimeout(()=>advanceStory(1),3500)}
+function storyReply(){
+  const s=STORIES[storyIdx];closeStory();openChat(s.pid,{story:storyIdx});
 }
-/* vertical swipe + wheel + keys */
+function storyMessage(){const s=STORIES[storyIdx];closeStory();openChat(s.pid)}
+function worldFromStory(){const s=STORIES[storyIdx];closeStory();openWorld(s.pid)}
+function storyMore(){
+  clearTimeout(storyTimer);
+  const s=STORIES[storyIdx], p=PEOPLE[s.pid];
+  openAct('More','Quiet controls for what you see.',[
+    ['◉','Open '+p.name.split(' ')[0]+'\u2019s World',()=>{closeSheets();worldFromStory()}],
+    ['🔕','Mute stories from '+p.name.split(' ')[0],()=>{closeSheets();toast('Muted quietly — they will not know')}],
+    ['◌','Limit what they see of you',()=>{closeSheets();toast('Visibility limited')}],
+    ['⊘','Block',()=>{closeSheets();toast('Blocked')},true],
+    ['⚑','Report',()=>{closeSheets();toast('Reported privately')},true]
+  ]);
+}
 (function(){
   const sv=document.getElementById('storyview');
   let y0=null;
@@ -1254,7 +2089,7 @@ function storyAct(msg){
   sv.addEventListener('touchend',e=>{
     if(y0===null)return;
     const dy=e.changedTouches[0].clientY-y0;y0=null;
-    if(Math.abs(dy)>52) advanceStory(dy<0?1:-1);
+    if(Math.abs(dy)>52)advanceStory(dy<0?1:-1);
   },{passive:true});
   let wheelLock=false;
   sv.addEventListener('wheel',e=>{
@@ -1271,14 +2106,17 @@ function storyAct(msg){
 })();
 
 /* ================= MEDIA VIEWER ================= */
+let currentMedia=0;
 function openMedia(i){
+  currentMedia=i;
   const m=MEDIA[i], b=boardOf(m.board);
   document.getElementById('mvImg').style.background=m.g;
   document.getElementById('mvBg').style.background=m.g;
   document.getElementById('mvTitle').textContent=m.t;
   document.getElementById('mvBicon').style.background=b.grad;
   document.getElementById('mvBicon').textContent=b.icon;
-  document.getElementById('mvCtx').textContent=`${b.name} · by ${m.by} · ${m.time}${m.video?' · Video':''}`;
+  document.getElementById('mvCtx').textContent=`${b.name} · by ${m.by} · ${m.time}${m.type==='video'?' · Video':''}`;
+  document.getElementById('mvPriv').textContent='🔒 '+m.priv;
   document.getElementById('mediaview').classList.add('open');
   document.getElementById('statusbar').classList.add('invert');
 }
@@ -1287,25 +2125,50 @@ function closeMedia(){
   if(!document.getElementById('storyview').classList.contains('open'))
     document.getElementById('statusbar').classList.remove('invert');
 }
-function mediaAct(msg){toast(msg)}
+function mediaReply(){
+  const m=MEDIA[currentMedia];
+  closeMedia();
+  if(m.pid)openChat(m.pid,{media:currentMedia});
+  else toast('This is your own moment');
+}
+function mediaMessage(){
+  const m=MEDIA[currentMedia];
+  closeMedia();
+  if(m.pid)openChat(m.pid);else toast('This is your own moment');
+}
+function mediaMore(){
+  const m=MEDIA[currentMedia];
+  const who=m.pid?PEOPLE[m.pid].name.split(' ')[0]:null;
+  openAct('More','',[
+    ...(who?[['◉','Open '+who+'\u2019s World',()=>{closeSheets();closeMedia();openWorld(m.pid)}]]:[]),
+    ['✈︎','Send as a Moment',()=>{closeSheets();toast('Moment sent')}],
+    ['⤓','Save to device',()=>{closeSheets();toast('Saved')}],
+    ...(who?[['⚑','Report',()=>{closeSheets();toast('Reported privately')},true]]:[])
+  ]);
+}
 
 /* ================= NAV / CHROME ================= */
 function go(id){
   document.querySelectorAll('.screen').forEach(s=>s.classList.remove('active'));
-  document.getElementById(id).classList.add('active');
-  document.getElementById(id).scrollTop=0;
-  const tabMap={now:'now',moments:'moments',boards:'boards',detail:'boards',people:'people',world:'people',profile:'now'};
-  document.querySelectorAll('.tab[data-t]').forEach(t=>{
-    t.classList.toggle('on',t.dataset.t===tabMap[id]);
-  });
+  const sc=document.getElementById(id);
+  sc.classList.add('active');
+  if(id!=='chat')sc.scrollTop=0;
+  const tabMap={now:'now',moments:'moments',boards:'boards',detail:'boards',people:'people',world:'people',profile:'now',inbox:'now',chat:'people'};
+  document.querySelectorAll('.tab[data-t]').forEach(t=>t.classList.toggle('on',t.dataset.t===tabMap[id]));
+  document.getElementById('tabbar').classList.toggle('hidden',id==='chat');
 }
-function openCreate(){
+function openSheet(id){
   document.getElementById('scrim').classList.add('open');
-  document.getElementById('createSheet').classList.add('open');
+  document.getElementById(id).classList.add('open');
 }
+function openCreate(){openSheet('createSheet')}
 function closeSheets(){
   document.getElementById('scrim').classList.remove('open');
   document.querySelectorAll('.sheet').forEach(s=>s.classList.remove('open'));
+}
+function obNext(){
+  document.getElementById('obStep1').style.display='none';
+  document.getElementById('obStep2').style.display='block';
 }
 function enter(){document.getElementById('onboard').classList.add('gone')}
 let toastTimer;
@@ -1318,12 +2181,27 @@ function toast(msg){
 }
 document.addEventListener('keydown',e=>{if(e.key==='Escape'){closeSheets();closeMedia()}});
 
+/* onboarding interests */
+(function(){
+  Object.entries(INTERESTS).forEach(([g,list])=>{
+    const grid=document.querySelector(`.int-grid[data-g="${g}"]`);
+    list.forEach(t=>{
+      const d=document.createElement('div');
+      d.className='int'+(['AI Video','Creative Technology','AI Creative','Fashion','Cinematic Ads'].includes(t)?' on':'');
+      d.textContent=t;
+      d.onclick=()=>d.classList.toggle('on');
+      grid.appendChild(d);
+    });
+  });
+})();
+
 /* ================= INIT ================= */
 renderNow();
 renderFilterbar();
 renderMoments();
 renderBoards();
 renderPeople();
+renderInbox();
 setFace('friend',document.querySelector('#profileSeg button'));
 </script>
 </body>
